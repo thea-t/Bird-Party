@@ -9,7 +9,7 @@
 Game::Game()
 	: m_pWindow( nullptr )
 {
-	m_pWindow = new sf::RenderWindow( sf::VideoMode( k_windowWidth, k_windowHeight ), "Zafs amazing Framework!" );
+	m_pWindow = new sf::RenderWindow( sf::VideoMode( k_windowWidth, k_windowHeight ), "Falconry" );
 
 	// Setup Window frame-rate setting
 	//m_pWindow->setFramerateLimit( 60 );
@@ -19,7 +19,7 @@ Game::Game()
 	// Setup all Game variables
 //	initaliseCircles();
 
-	m_player.load( "dog.png" );
+	m_player.load( "player_idle.png" );
 }
 
 Game::~Game()
@@ -76,12 +76,22 @@ void Game::run()
 void Game::update( float deltaTime )
 {
 	m_player.update( deltaTime );
+
+	//for (size_t i = 0; i < m_player.m_projectiles.size(); i++)
+	//{
+	//	m_player.m_projectiles[i].update(deltaTime);
+	//}
 	//std::cout << deltaTime << "\n";
 }
 
 void Game::render()
 {
 	m_pWindow->draw( m_player );
+
+	for (size_t i = 0; i < m_player.m_projectiles.size(); i++)
+	{
+		m_pWindow->draw(m_player.m_projectiles[i]);
+	}
 
 	//m_pWindow->draw( m_circleShape1 );
 	//m_pWindow->draw( m_circleShape2 );
