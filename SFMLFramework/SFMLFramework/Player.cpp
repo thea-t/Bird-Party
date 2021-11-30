@@ -1,5 +1,5 @@
 #include <SFML/Window/Keyboard.hpp>
-
+#include <iostream>
 #include "Player.h"
 #include "Projectile.h"
 #include "Settings.h"
@@ -18,7 +18,28 @@ Player::~Player()
 
 void Player::update( float deltaTime )
 {
-	if( sf::Keyboard::isKeyPressed( sf::Keyboard::Left ) )
+	int animationIndex = 0;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && !m_shootKeyWasPressed)
+	{
+		m_shootKeyWasPressed = true;
+
+		sf::Vector2f pos = getPosition();
+		pos.y -= 50;
+
+		projectiles[projectileIndex].setPosition(pos);
+
+		projectileIndex++;
+		//size of an array: https://stackoverflow.com/questions/4108313/how-do-i-find-the-length-of-an-array
+		if (projectileIndex == sizeof(projectiles) / sizeof(projectiles[0]))
+		{
+			projectileIndex = 0;
+		}
+
+		animationIndex = 2;
+
+		//std::cout << std::to_string(projectileIndex) + "\n";
+	}
+	else if( sf::Keyboard::isKeyPressed( sf::Keyboard::Left ) )
 	{
 		sf::Vector2f pos = getPosition();
 		sf::Vector2f scale = getScale();
@@ -35,7 +56,7 @@ void Player::update( float deltaTime )
 			setScale(-scale.x, scale.y);
 		}
 
-		animate(1, deltaTime);
+		animationIndex = 1;
 	}
 
 	else if( sf::Keyboard::isKeyPressed( sf::Keyboard::Right ) )
@@ -54,23 +75,19 @@ void Player::update( float deltaTime )
 			setScale(-scale.x, getScale().y);
 		}
 
-		animate(1, deltaTime);
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-	{
-		sf::Vector2f pos = getPosition();
-		Projectile projectile = Projectile(pos);
-		m_projectiles.push_back( projectile);
-		
-
-		animate(2, deltaTime);
-
+		animationIndex = 1;
 	}
 	else 
 	{
-		animate(0, deltaTime);
+		animationIndex = 0;
 	}
 
+	if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	{
+		m_shootKeyWasPressed = false;
+	}
+
+	animate(animationIndex, deltaTime);
 }
 
 void Player::animate( int animation, float deltaTime )
@@ -80,7 +97,8 @@ void Player::animate( int animation, float deltaTime )
 
 	if ( animation == 0 ) 
 	{
-		this->load( "player_idle.png" );
+		//////////////////////
+		load( "player_idle.png" );
 	}
 	else if( animation == 1 )
 	{

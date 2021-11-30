@@ -12,12 +12,10 @@ Game::Game()
 	m_pWindow = new sf::RenderWindow( sf::VideoMode( k_windowWidth, k_windowHeight ), "Falconry" );
 
 	// Setup Window frame-rate setting
-	//m_pWindow->setFramerateLimit( 60 );
+	m_pWindow->setFramerateLimit( 60 );
 	// Enable vertical sync to be on
-	//m_pWindow->setVerticalSyncEnabled( true );
+	m_pWindow->setVerticalSyncEnabled( true );
 
-	// Setup all Game variables
-//	initaliseCircles();
 
 	m_player.load( "player_idle.png" );
 }
@@ -39,15 +37,6 @@ void Game::handleWindowsEvents()
 	}
 }
 
-//void Game::initaliseCircles()
-//{
-//	m_circleShape1.setRadius( 50.0f );
-//	m_circleShape1.setFillColor( sf::Color::Green );
-//	m_circleShape1.setPointCount( 100 );
-//
-//	m_circleShape2.setRadius( 100.0f );
-//	m_circleShape2.setFillColor( sf::Color::Blue );
-//}
 
 void Game::run()
 {
@@ -77,24 +66,25 @@ void Game::update( float deltaTime )
 {
 	m_player.update( deltaTime );
 
-	//for (size_t i = 0; i < m_player.m_projectiles.size(); i++)
-	//{
-	//	m_player.m_projectiles[i].update(deltaTime);
-	//}
-	//std::cout << deltaTime << "\n";
+	for (size_t i = 0; i < m_player.projectileIndex; i++)
+	{
+		m_player.projectiles[i].update(deltaTime);
+	}
+
 }
 
 void Game::render()
 {
 	m_pWindow->draw( m_player );
 
-	for (size_t i = 0; i < m_player.m_projectiles.size(); i++)
+	for (size_t i = 0; i < m_player.projectileIndex; i++)
 	{
-		m_pWindow->draw(m_player.m_projectiles[i]);
+		m_pWindow->draw(m_player.projectiles[i]);
 	}
 
-	//m_pWindow->draw( m_circleShape1 );
-	//m_pWindow->draw( m_circleShape2 );
-
+	for (size_t i = 0; i < EnemyManager::aliveEnemies.size(); i++)
+	{
+		m_pWindow->draw(EnemyManager::aliveEnemies[i]);
+	}
 }
 

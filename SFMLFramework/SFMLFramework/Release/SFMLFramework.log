@@ -1,7 +1,7 @@
-﻿  Game.cpp
-  Generating code
-  0 of 183 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
-  Finished generating code
-  SFMLFramework.vcxproj -> D:\PROJECTS\PROJECTS - C++\SpaceInvaders\SFMLFramework\Release\SFMLFramework.exe
+﻿  LevelManager.cpp
+C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\LevelManager.cpp(15,23): warning C4018: '<': signed/unsigned mismatch
+C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\LevelManager.cpp(17,24): warning C4018: '<': signed/unsigned mismatch
+C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\LevelManager.cpp(22,30): warning C4244: 'argument': conversion from 'size_t' to 'float', possible loss of data
+C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\LevelManager.cpp(22,28): warning C4244: 'argument': conversion from 'size_t' to 'float', possible loss of data
+LevelManager.obj : error LNK2001: unresolved external symbol "public: static class std::vector<class Enemy,class std::allocator<class Enemy> > EnemyManager::aliveEnemies" (?aliveEnemies@EnemyManager@@2V?$vector@VEnemy@@V?$allocator@VEnemy@@@std@@@std@@A)
+C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\Release\SFMLFramework.exe : fatal error LNK1120: 1 unresolved externals

@@ -8,6 +8,7 @@
 class Player : public GameSprite
 {
 private:
+	bool m_shootKeyWasPressed;
 	bool m_stepMade;
 	int m_currentAnimation;
 	float m_elapsedTime;
@@ -17,11 +18,12 @@ private:
 
 public:
 
-	std::vector< Projectile > m_projectiles;
+	int projectileIndex;
+	Projectile projectiles[100];
 	Player();
 	~Player();
 
 	void update( float deltaTime );
 };
 
-#endif // End of '#ifndef PLAYER_H'
+#endif

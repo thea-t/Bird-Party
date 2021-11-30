@@ -5,6 +5,8 @@
 #include <SFML/System/Clock.hpp>
 
 #include "Player.h"
+#include "EnemyManager.h"
+#include "LevelManager.h"
 
 namespace sf
 {
@@ -17,13 +19,9 @@ private:
 	sf::RenderWindow* m_pWindow;
 
 	sf::Clock m_clock;
-
-	//sf::CircleShape m_circleShape1;
-	//sf::CircleShape m_circleShape2;
 	Player m_player;
-
+	LevelManager m_levelManager;
 	void handleWindowsEvents();
-	//void initaliseCircles();
 
 	void update( float deltaTime );
 	void render();

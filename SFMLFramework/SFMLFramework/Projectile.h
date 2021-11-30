@@ -16,4 +16,4 @@ public:
 	void update(float deltaTime);
 };
 
-#endif // End of '#ifndef PLAYER_H'
+#endif
