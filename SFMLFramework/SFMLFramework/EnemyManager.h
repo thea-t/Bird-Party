@@ -9,7 +9,7 @@ private:
 public:
 	EnemyManager();
 
-	static std::vector<Enemy> aliveEnemies;
+	std::vector<Enemy> aliveEnemies;
 };
 
 #endif

@@ -1,35 +1,68 @@
 #include "LevelManager.h"
-#include "ForestLevelData.h"
 #include "BasicEnemy.h"
 #include "EnemyManager.h"
+#include "EnemyType.h"
+#include <string>
+#include<iostream>
+#include<fstream>
+#include <sstream>
+#include <vector>
 
 LevelManager::LevelManager()
 {
-	ForestLevelData forestLevel;
-	LoadLevel(forestLevel);
+	loadLevel("Level" + std::to_string(m_currentLevel) + ".txt");
 }
 
-void LevelManager::LoadLevel(LevelData level)
+void LevelManager::loadLevel(std::string levelPath)
 {
+	std::string levelString = readFileIntoString(levelPath);
+	std::cout << levelString;
+	std::vector<std::string> splittedString = splitString(levelString);
+	int rowCount = splittedString.size();
+	int columnCount = splittedString[0].size();
+
 	int i = 0;
-	for (size_t y = 0; y < level.rowCount; y++)
+	for (size_t y = 0; y < rowCount; y++)
 	{
-		for (size_t x = 0; x < level.columnCount; x++)
+		for (size_t x = 0; x < columnCount; x++)
 		{
-			if (level.enemyConfig[i] == Basic)
+			// how to convert string to int : https://stackoverflow.com/questions/7663709/how-can-i-convert-a-stdstring-to-int
+			int enemyType = std::stoi(splittedString[y]);
+			if (enemyType == Basic)
 			{
-				BasicEnemy basicEnemy;
-				basicEnemy.setPosition(x,y);
-				EnemyManager::aliveEnemies.push_back(basicEnemy);
+				BasicEnemy* pBasicEnemy = new BasicEnemy();
+				pBasicEnemy->setPosition(x,y);
+				std::cout << "B";
 			}
 			
 			i++;
 		}
 	}
-
-	m_currentLevel = level;
 }
 
-void LevelManager::OnLevelComplete()
+void LevelManager::onLevelComplete()
 {
+}
+
+// how to read .txt files: https://www.delftstack.com/howto/cpp/read-file-into-string-cpp/
+std::string LevelManager::readFileIntoString(const std::string& path)
+{
+	std::ifstream input_file(path);
+	if (!input_file.is_open()) {
+		std::cerr << "Could not open the file - '"
+			<< path << "'" << std::endl;
+		exit(EXIT_FAILURE);
+	}
+	return std::string((std::istreambuf_iterator<char>(input_file)), std::istreambuf_iterator<char>());
+}
+
+std::vector<std::string> LevelManager::splitString(const std::string& str)
+{
+	auto result = std::vector<std::string>{};
+	auto ss = std::stringstream{ str };
+
+	for (std::string line; std::getline(ss, line, '\n');)
+		result.push_back(line);
+
+	return result;
 }

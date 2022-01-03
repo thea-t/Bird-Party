@@ -2,5 +2,5 @@
 
 BasicEnemy::BasicEnemy()
 {
-	//path = "basic-enemy-1.png";
+	path = "basic-enemy-1.png";
 }

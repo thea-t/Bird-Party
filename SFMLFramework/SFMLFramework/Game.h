@@ -7,7 +7,7 @@
 #include "Player.h"
 #include "EnemyManager.h"
 #include "LevelManager.h"
-
+//class comment
 namespace sf
 {
 	class RenderWindow;
@@ -18,12 +18,19 @@ class Game
 private:
 	sf::RenderWindow* m_pWindow;
 
+	// This is the clock used for timing
 	sf::Clock m_clock;
+
+	// This is the player instance
 	Player m_player;
+
 	LevelManager m_levelManager;
 	void handleWindowsEvents();
 
+
 	void update( float deltaTime );
+
+	// this is the render function
 	void render();
 
 public:

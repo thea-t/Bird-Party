@@ -1,8 +1,8 @@
 #ifndef ENEMYTYPE_H
 #define ENEMYTYPE_H
 enum EnemyType {
-    Bonus,
     Basic,
+    Bonus,
     Fighter,
     Diver,
     Rebirth

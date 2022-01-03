@@ -4,15 +4,15 @@
 Projectile::Projectile( )
 {
 	load("projectile_player.png");
-	m_speed = 150;
-	setScale(0.05, 0.05);
+	m_speed = 150.0f;
+	setScale(0.05f, 0.05f);
 }
 
 Projectile::Projectile( sf::Vector2f position )
 {
 	load("projectile_player.png");
-	m_speed = 150;
-	setScale(0.05, 0.05);
+	m_speed = 150.0f;
+	setScale(0.05f, 0.05f);
 	setPosition( position );
 }
 

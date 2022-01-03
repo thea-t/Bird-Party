@@ -21,6 +21,7 @@ void Player::update( float deltaTime )
 	int animationIndex = 0;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && !m_shootKeyWasPressed)
 	{
+
 		m_shootKeyWasPressed = true;
 
 		sf::Vector2f pos = getPosition();
@@ -29,8 +30,10 @@ void Player::update( float deltaTime )
 		projectiles[projectileIndex].setPosition(pos);
 
 		projectileIndex++;
+
 		//size of an array: https://stackoverflow.com/questions/4108313/how-do-i-find-the-length-of-an-array
-		if (projectileIndex == sizeof(projectiles) / sizeof(projectiles[0]))
+		int length = sizeof(projectiles) / sizeof(projectiles[0]);
+		if (projectileIndex == length)
 		{
 			projectileIndex = 0;
 		}

@@ -72,7 +72,7 @@ void Game::update( float deltaTime )
 	}
 
 }
-
+//function comments
 void Game::render()
 {
 	m_pWindow->draw( m_player );
@@ -82,9 +82,9 @@ void Game::render()
 		m_pWindow->draw(m_player.projectiles[i]);
 	}
 
-	for (size_t i = 0; i < EnemyManager::aliveEnemies.size(); i++)
+	/*for (size_t i = 0; i < EnemyManager::aliveEnemies.size(); i++)
 	{
 		m_pWindow->draw(EnemyManager::aliveEnemies[i]);
-	}
+	}*/
 }
 
