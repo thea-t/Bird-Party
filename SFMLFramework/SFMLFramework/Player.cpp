@@ -6,7 +6,9 @@
 
 Player::Player()
 {
-	m_animationDelay = 0.1;
+	m_delayBetweenSteps = 0.1;
+	m_delayBetweenAttacks = 0.5;
+
 	this->setScale(0.3,0.3);
 	this->setPosition(k_windowWidth / 2, k_windowHeight - 100);
 }
@@ -18,15 +20,20 @@ Player::~Player()
 
 void Player::update( float deltaTime )
 {
+	m_timePassedBetweenAttacks += deltaTime;
+
 	int animationIndex = 0;
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && !m_shootKeyWasPressed)
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && m_CanShoot)
 	{
 
-		m_shootKeyWasPressed = true;
+		m_timePassedBetweenAttacks = 0;
+		m_CanShoot = false;
 
+		// get the player's position and give it some Y offset 
 		sf::Vector2f pos = getPosition();
 		pos.y -= 50;
 
+		// set the next projectile's position as the same as the offsetted player position
 		projectiles[projectileIndex].setPosition(pos);
 
 		projectileIndex++;
@@ -80,14 +87,18 @@ void Player::update( float deltaTime )
 
 		animationIndex = 1;
 	}
+	else if( !m_CanShoot )
+	{
+		animationIndex = 2;
+	}
 	else 
 	{
 		animationIndex = 0;
 	}
 
-	if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	if (m_timePassedBetweenAttacks > m_delayBetweenAttacks)
 	{
-		m_shootKeyWasPressed = false;
+		m_CanShoot = true;
 	}
 
 	animate(animationIndex, deltaTime);
@@ -95,35 +106,38 @@ void Player::update( float deltaTime )
 
 void Player::animate( int animation, float deltaTime )
 {
-	m_elapsedTime += deltaTime;
+	m_timePassedBetweenSteps += deltaTime;
 
 
 	if ( animation == 0 ) 
 	{
-		//////////////////////
-		load( "player_idle.png" );
+		// set idle texture
+		setTexture( idleTexture );
 	}
 	else if( animation == 1 )
 	{
-		if (m_elapsedTime >= m_animationDelay)
+		if (m_timePassedBetweenSteps >= m_delayBetweenSteps)
 		{
 			if (m_stepMade) 
 			{
-				this->load( "player_move_1.png" );
+				// set move1 texture
+				setTexture( move1Texture );
 				m_stepMade = false;
 			}
 			else 
 			{
-				this->load( "player_move_2.png" );
+				// set move2 texture
+				setTexture( move2Texture );
 				m_stepMade = true;
 			}
 
-			m_elapsedTime = 0;
+			m_timePassedBetweenSteps = 0;
 		}
 	}
 	else if ( animation == 2 ) 
 	{
-		this->load("player_shoot.png");
+		// set shoot texture
+		setTexture( shootTexture );
 	}
 }
 

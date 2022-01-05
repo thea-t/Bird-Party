@@ -10,6 +10,9 @@ public:
 	Enemy();
 
 	const char* path;
+	sf::Texture idleTexture;
+
+	void update( float deltaTime );
 };
 
 #endif

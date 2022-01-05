@@ -16,8 +16,6 @@ Game::Game()
 	// Enable vertical sync to be on
 	m_pWindow->setVerticalSyncEnabled( true );
 
-
-	m_player.load( "player_idle.png" );
 }
 
 Game::~Game()
@@ -41,6 +39,10 @@ void Game::handleWindowsEvents()
 void Game::run()
 {
 	m_clock.restart();
+	m_levelManager.pEnemyManager = &m_enemyManager;
+	m_levelManager.loadLevel(0);
+	m_TextureLoader.loadTextures(&m_player, &m_enemyManager);
+
 	while( m_pWindow->isOpen() )
 	{
 		// Handle all Windows events
@@ -64,13 +66,20 @@ void Game::run()
 
 void Game::update( float deltaTime )
 {
+	// update the player
 	m_player.update( deltaTime );
 
+	// update the projectiles such as bullets
 	for (size_t i = 0; i < m_player.projectileIndex; i++)
 	{
 		m_player.projectiles[i].update(deltaTime);
 	}
 
+	// update the enemies
+	for (size_t i = 0; i < m_enemyManager.aliveEnemies.size(); i++)
+	{
+		m_enemyManager.aliveEnemies[i].update(deltaTime);
+	}
 }
 //function comments
 void Game::render()
@@ -82,9 +91,10 @@ void Game::render()
 		m_pWindow->draw(m_player.projectiles[i]);
 	}
 
-	/*for (size_t i = 0; i < EnemyManager::aliveEnemies.size(); i++)
+	for (size_t i = 0; i < m_enemyManager.aliveEnemies.size(); i++)
 	{
-		m_pWindow->draw(EnemyManager::aliveEnemies[i]);
-	}*/
+		m_pWindow->draw(m_enemyManager.aliveEnemies[i]);
+	}
+
 }
 

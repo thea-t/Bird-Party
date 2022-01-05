@@ -2,5 +2,9 @@
 
 Enemy::Enemy()
 {
-	//load(path);
+	path = "";
+}
+
+void Enemy::update(float deltaTime)
+{
 }

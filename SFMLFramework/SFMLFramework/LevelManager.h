@@ -2,6 +2,7 @@
 #define LEVELMANAGER_H
 #include <string>
 #include <vector>
+#include "EnemyManager.h"
 
 class LevelManager
 {
@@ -14,8 +15,10 @@ private:
 public:
 	LevelManager();
 
-	void loadLevel( std::string path );
+	void loadLevel( int level );
 	void onLevelComplete();
+
+	EnemyManager* pEnemyManager;
 };
 
 #endif

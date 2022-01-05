@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "EnemyManager.h"
 #include "LevelManager.h"
+#include "TextureLoader.h"
 //class comment
 namespace sf
 {
@@ -23,8 +24,9 @@ private:
 
 	// This is the player instance
 	Player m_player;
-
+	TextureLoader m_TextureLoader;
 	LevelManager m_levelManager;
+	EnemyManager m_enemyManager;
 	void handleWindowsEvents();
 
 
