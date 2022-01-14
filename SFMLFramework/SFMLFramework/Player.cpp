@@ -9,7 +9,7 @@ Player::Player()
 	m_delayBetweenSteps = 0.1;
 	m_delayBetweenAttacks = 0.5;
 
-	this->setScale(0.3,0.3);
+	this->setScale(0.2,0.2);
 	this->setPosition(k_windowWidth / 2, k_windowHeight - 100);
 }
 
@@ -23,15 +23,15 @@ void Player::update( float deltaTime )
 	m_timePassedBetweenAttacks += deltaTime;
 
 	int animationIndex = 0;
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && m_CanShoot)
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && m_canShoot)
 	{
 
 		m_timePassedBetweenAttacks = 0;
-		m_CanShoot = false;
+		m_canShoot = false;
 
 		// get the player's position and give it some Y offset 
 		sf::Vector2f pos = getPosition();
-		pos.y -= 50;
+		pos.y -= 30;
 
 		// set the next projectile's position as the same as the offsetted player position
 		projectiles[projectileIndex].setPosition(pos);
@@ -87,7 +87,7 @@ void Player::update( float deltaTime )
 
 		animationIndex = 1;
 	}
-	else if( !m_CanShoot )
+	else if( !m_canShoot )
 	{
 		animationIndex = 2;
 	}
@@ -98,7 +98,7 @@ void Player::update( float deltaTime )
 
 	if (m_timePassedBetweenAttacks > m_delayBetweenAttacks)
 	{
-		m_CanShoot = true;
+		m_canShoot = true;
 	}
 
 	animate(animationIndex, deltaTime);

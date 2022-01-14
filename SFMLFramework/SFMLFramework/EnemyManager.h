@@ -16,6 +16,7 @@ public:
 
 	BasicEnemy basicEnemy;
 	void instantiateEnemy( EnemyType type, int xPos, int yPos);
+	void moveAllEnemies();
 };
 
 #endif

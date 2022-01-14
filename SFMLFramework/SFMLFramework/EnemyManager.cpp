@@ -7,6 +7,7 @@ EnemyManager::EnemyManager()
 {
 }
 
+
 void EnemyManager::instantiateEnemy( EnemyType type , int xPos, int yPos )
 {
 	if ( type == Basic)
@@ -14,7 +15,7 @@ void EnemyManager::instantiateEnemy( EnemyType type , int xPos, int yPos )
 		BasicEnemy pBasicEnemy;
 		pBasicEnemy.setScale(0.1, 0.1);
 		// TODO: come up with something better that suits multiple lines being instantiated
-		pBasicEnemy.setPosition(xPos* 100 + 400, yPos * 100 + 200 );
+		pBasicEnemy.setPosition(xPos* 80 + 50, yPos * 70 + 50);
 		aliveEnemies.push_back(pBasicEnemy);
 
 	}
@@ -33,4 +34,8 @@ void EnemyManager::instantiateEnemy( EnemyType type , int xPos, int yPos )
 	else if (type == Rebirth) {
 
 	}
+}
+
+void EnemyManager::moveAllEnemies()
+{
 }

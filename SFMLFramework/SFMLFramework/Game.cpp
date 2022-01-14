@@ -39,6 +39,7 @@ void Game::handleWindowsEvents()
 void Game::run()
 {
 	m_clock.restart();
+	m_enemyClock.restart();
 	m_levelManager.pEnemyManager = &m_enemyManager;
 	m_levelManager.loadLevel(0);
 	m_TextureLoader.loadTextures(&m_player, &m_enemyManager);

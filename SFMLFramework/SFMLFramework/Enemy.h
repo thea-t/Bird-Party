@@ -12,6 +12,7 @@ public:
 	const char* path;
 	sf::Texture idleTexture;
 
+	void move();
 	void update( float deltaTime );
 };
 

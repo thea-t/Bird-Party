@@ -8,7 +8,7 @@
 class Player : public GameSprite
 {
 private:
-	bool m_CanShoot;
+	bool m_canShoot;
 	bool m_stepMade;
 	int m_currentAnimation;
 	float m_timePassedBetweenSteps;

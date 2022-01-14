@@ -4,13 +4,13 @@
 Projectile::Projectile( )
 {
 	m_speed = 150.0f;
-	setScale(0.05f, 0.05f);
+	setScale(0.03f, 0.03f);
 }
 
 Projectile::Projectile( sf::Vector2f position )
 {
 	m_speed = 150.0f;
-	setScale(0.05f, 0.05f);
+	setScale(0.03f, 0.03f);
 	setPosition( position );
 }
 

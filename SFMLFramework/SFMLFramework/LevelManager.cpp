@@ -27,12 +27,18 @@ void LevelManager::loadLevel( int level )
 	{
 		for (size_t x = 0; x < columnCount; x++)
 		{
-			// how to convert string to int : https://stackoverflow.com/questions/7663709/how-can-i-convert-a-stdstring-to-int
-			int enemyType = std::stoi(splittedString[y]);
+			// check if a char is numeric: https://www.cplusplus.com/reference/cctype/isdigit/
+			if (isdigit(splittedString[y][x])) {
 
-			// how to comvert int to enum class: https://stackoverflow.com/questions/11452920/how-to-cast-int-to-enum-in-c
-			pEnemyManager->instantiateEnemy( static_cast<EnemyType>(enemyType), x, y );
-			
+				// how to convert string to int : https://stackoverflow.com/questions/5029840/convert-char-to-int-in-c-and-c
+				int enemyType = splittedString[y][x] - '0';
+
+				std::cout << enemyType;
+				// how to convert int to enum class: https://stackoverflow.com/questions/11452920/how-to-cast-int-to-enum-in-c
+				pEnemyManager->instantiateEnemy(static_cast<EnemyType>(enemyType), x, y);
+
+			}
+
 			i++;
 
 		}
