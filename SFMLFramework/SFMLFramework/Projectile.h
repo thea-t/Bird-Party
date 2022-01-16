@@ -11,6 +11,8 @@ private:
 protected:
 	float speed;
 
+	float getRadius(sf::Sprite* sprite);
+	float getDistance(sf::Vector2f* a, sf::Vector2f* b);
 public:
 	Projectile();
 	Projectile( sf::Vector2f position );

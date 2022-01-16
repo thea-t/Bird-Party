@@ -43,7 +43,7 @@ void Game::run()
 	for (size_t i = 0; i < 100; i++)
 	{
 		m_player.projectiles[i].pEnemyManager = &m_enemyManager;
-		m_enemyManager.projectiles[i].pPlayer = &m_player;
+		m_enemyManager.projectiles[i].pPlayerSprite = &m_player;
 	}
 	m_levelManager.pEnemyManager = &m_enemyManager;
 

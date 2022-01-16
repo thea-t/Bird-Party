@@ -2,8 +2,9 @@
 #define ENEMY_H
 
 #include "GameSprite.h"
-#include "EnemyManager.h"
 #include "Settings.h"
+
+// solving errors with forward declarations: https://www.learncpp.com/cpp-tutorial/forward-declarations/
 class EnemyManager;
 
 class Enemy : public GameSprite

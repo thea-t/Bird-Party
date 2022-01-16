@@ -4,8 +4,6 @@
 #include "Projectile.h"
 #include "EnemyManager.h"
 
-class EnemyManager;
-
 class PlayerProjectile : public Projectile
 {
 private:

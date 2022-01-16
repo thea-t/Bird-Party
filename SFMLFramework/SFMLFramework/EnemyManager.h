@@ -5,9 +5,7 @@
 #include "Enemy.h"
 #include "EnemyType.h"
 #include "Settings.h"
-// solving errors with forward declarations: https://www.learncpp.com/cpp-tutorial/forward-declarations/
-class Enemy;
-class EnemyProjectile;
+
 
 class EnemyManager
 {

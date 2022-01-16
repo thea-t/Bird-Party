@@ -1,6 +1,7 @@
 #include "Enemy.h"
 #include <iostream>
 #include <cstdlib>
+#include "EnemyManager.h"
 
 Enemy::Enemy()
 {

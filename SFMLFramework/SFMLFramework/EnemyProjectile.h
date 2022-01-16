@@ -3,9 +3,8 @@
 
 
 #include "Projectile.h"
-#include "Player.h"
+//#include "Player.h"
 
-class Player;
 
 class EnemyProjectile : public Projectile
 {
@@ -17,7 +16,7 @@ public:
 	EnemyProjectile( sf::Vector2f position );
 	~EnemyProjectile();
 
-	Player* pPlayer;
+	sf::Sprite* pPlayerSprite;
 
 };
 
