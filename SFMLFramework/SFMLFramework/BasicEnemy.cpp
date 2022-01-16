@@ -1,6 +1,11 @@
 #include "BasicEnemy.h"
+#include "Enemy.h"
 
 BasicEnemy::BasicEnemy()
 {
-	path = "basic-enemy-1.png";
+}
+
+BasicEnemy::BasicEnemy(EnemyManager* enemyManager)
+{
+	pEnemyManager = enemyManager;
 }

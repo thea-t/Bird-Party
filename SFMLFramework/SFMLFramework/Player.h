@@ -2,8 +2,10 @@
 #define PLAYER_H
 
 #include "GameSprite.h"
-#include "Projectile.h"
+#include "PlayerProjectile.h"
 #include <vector>
+
+class PlayerProjectile;
 
 class Player : public GameSprite
 {
@@ -24,7 +26,7 @@ public:
 	~Player();
 
 	int projectileIndex;
-	Projectile projectiles[100];
+	PlayerProjectile projectiles[100];
 
 	sf::Texture idleTexture;
 	sf::Texture move1Texture;

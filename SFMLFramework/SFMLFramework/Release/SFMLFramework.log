@@ -1,21 +1,8 @@
-﻿  BasicEnemy.cpp
-  Enemy.cpp
-  EnemyManager.cpp
-D:\PROJECTS\PROJECTS - C++\SpaceInvaders\SFMLFramework\SFMLFramework\EnemyManager.cpp(16,32): warning C4305: 'argument': truncation from 'double' to 'float'
-D:\PROJECTS\PROJECTS - C++\SpaceInvaders\SFMLFramework\SFMLFramework\EnemyManager.cpp(18,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\PROJECTS\PROJECTS - C++\SpaceInvaders\SFMLFramework\SFMLFramework\EnemyManager.cpp(18,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Game.cpp
-D:\PROJECTS\PROJECTS - C++\SpaceInvaders\SFMLFramework\SFMLFramework\Game.cpp(74,23): warning C4018: '<': signed/unsigned mismatch
-D:\PROJECTS\PROJECTS - C++\SpaceInvaders\SFMLFramework\SFMLFramework\Game.cpp(90,23): warning C4018: '<': signed/unsigned mismatch
-  LevelManager.cpp
-D:\PROJECTS\PROJECTS - C++\SpaceInvaders\SFMLFramework\SFMLFramework\LevelManager.cpp(26,23): warning C4018: '<': signed/unsigned mismatch
-D:\PROJECTS\PROJECTS - C++\SpaceInvaders\SFMLFramework\SFMLFramework\LevelManager.cpp(28,24): warning C4018: '<': signed/unsigned mismatch
-  Main.cpp
-  TextureLoader.cpp
-D:\PROJECTS\PROJECTS - C++\SpaceInvaders\SFMLFramework\SFMLFramework\TextureLoader.cpp(30,23): warning C4018: '<': signed/unsigned mismatch
-  Generating code
-  7 of 420 functions ( 1.7%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
-  Finished generating code
-  SFMLFramework.vcxproj -> D:\PROJECTS\PROJECTS - C++\SpaceInvaders\SFMLFramework\Release\SFMLFramework.exe
+﻿  EnemyProjectile.cpp
+D:\PROJECTS\PROJECTS - C++\SpaceInvaders\SFMLFramework\SFMLFramework\EnemyManager.h(26,18): error C3646: 'projectiles': unknown override specifier
+D:\PROJECTS\PROJECTS - C++\SpaceInvaders\SFMLFramework\SFMLFramework\EnemyManager.h(26,29): error C2143: syntax error: missing ',' before '['
+D:\PROJECTS\PROJECTS - C++\SpaceInvaders\SFMLFramework\SFMLFramework\EnemyManager.h(26,34): error C2238: unexpected token(s) preceding ';'
+D:\PROJECTS\PROJECTS - C++\SpaceInvaders\SFMLFramework\SFMLFramework\CollisionMath.h(15,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  PlayerProjectile.cpp
+D:\PROJECTS\PROJECTS - C++\SpaceInvaders\SFMLFramework\SFMLFramework\Player.h(29,19): error C2079: 'Player::projectiles' uses undefined class 'PlayerProjectile'
+D:\PROJECTS\PROJECTS - C++\SpaceInvaders\SFMLFramework\SFMLFramework\CollisionMath.h(15,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data

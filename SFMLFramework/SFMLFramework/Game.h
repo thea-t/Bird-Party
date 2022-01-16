@@ -4,10 +4,10 @@
 #include <SFML/Graphics/CircleShape.hpp>
 #include <SFML/System/Clock.hpp>
 
+#include "TextureLoader.h"
 #include "Player.h"
 #include "EnemyManager.h"
 #include "LevelManager.h"
-#include "TextureLoader.h"
 //class comment
 namespace sf
 {

@@ -6,8 +6,11 @@
 class Projectile : public GameSprite
 {
 private:
-	float m_speed;
-	
+	virtual void checkCollision();
+
+protected:
+	float speed;
+
 public:
 	Projectile();
 	Projectile( sf::Vector2f position );

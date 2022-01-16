@@ -19,11 +19,11 @@
     <Filter Include="Source Files\Enemies">
       <UniqueIdentifier>{bcc63848-659f-4f49-8e2e-3b40a6ab0795}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Levels">
-      <UniqueIdentifier>{4957b07f-a93b-4988-93a9-00a73ac1fac2}</UniqueIdentifier>
+    <Filter Include="Header Files\Projectiles">
+      <UniqueIdentifier>{86d661f4-4bd3-4272-9a10-aeedf1294544}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Levels">
-      <UniqueIdentifier>{9d9b1bd2-fb0f-4610-b146-ed9f024f4644}</UniqueIdentifier>
+    <Filter Include="Source Files\Projectiles">
+      <UniqueIdentifier>{b5a6a0e2-714f-4c37-b091-e62caa026e09}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -37,9 +37,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Projectile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EnemyManager.cpp">
@@ -57,11 +54,17 @@
     <ClCompile Include="TextureLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Projectile.cpp">
+      <Filter>Source Files\Projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerProjectile.cpp">
+      <Filter>Source Files\Projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyProjectile.cpp">
+      <Filter>Source Files\Projectiles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Projectile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -94,6 +97,18 @@
     </ClInclude>
     <ClInclude Include="TextureLoader.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionMath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile.h">
+      <Filter>Header Files\Projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerProjectile.h">
+      <Filter>Header Files\Projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyProjectile.h">
+      <Filter>Header Files\Projectiles</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
