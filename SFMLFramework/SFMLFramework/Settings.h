@@ -1,7 +1,7 @@
 #ifndef SETTINGS_H
 #define SETTINGS_H
 
-const unsigned int k_windowWidth = 1200;
+const unsigned int k_windowWidth = 1400;
 const unsigned int k_windowHeight = 800;
 
 const float k_arenaWidth = static_cast<float>( k_windowWidth );

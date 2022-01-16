@@ -1,4 +1,5 @@
 #include "EnemyProjectile.h"
+#include "Settings.h"
 #include <iostream>
 
 EnemyProjectile::EnemyProjectile()
@@ -29,7 +30,14 @@ void EnemyProjectile::checkCollision()
 	float distance = getDistance(&pos, &playerPosition);
 
 	if (radius + playerRadius >= distance) {
-		std::cout << "DEADED\n";
+
+		// set the position of the projectile very far away.
+		setPosition(k_arenaWidth * k_arenaWidth, k_arenaHeight * k_arenaHeight);
+
+		int temp = *pPlayerHealth;
+		temp--;
+		*pPlayerHealth = temp;
+		std::cout << *pPlayerHealth;
 	}
 }
 

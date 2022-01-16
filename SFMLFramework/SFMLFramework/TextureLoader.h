@@ -4,6 +4,8 @@
 #include <SFML/Graphics/Texture.hpp>
 #include "Player.h"
 #include "EnemyManager.h"
+#include "UIManager.h"
+#include "Background.h"
 
 class TextureLoader
 {
@@ -14,6 +16,6 @@ public:
 	TextureLoader();
 
 	// how to swap textures: https://en.sfml-dev.org/forums/index.php?topic=11382.0
-	void loadTextures( Player* player, EnemyManager* enemyManager);
+	void loadTextures( Player* player, EnemyManager* enemyManager, UIManager* uiManager, Background* background);
 };
 #endif

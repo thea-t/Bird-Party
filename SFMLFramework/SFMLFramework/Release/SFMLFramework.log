@@ -1,11 +1,7 @@
-﻿  Game.cpp
-D:\PROJECTS\PROJECTS - C++\SpaceInvaders\SFMLFramework\SFMLFramework\Game.cpp(88,23): warning C4018: '<': signed/unsigned mismatch
-D:\PROJECTS\PROJECTS - C++\SpaceInvaders\SFMLFramework\SFMLFramework\Game.cpp(93,23): warning C4018: '<': signed/unsigned mismatch
-D:\PROJECTS\PROJECTS - C++\SpaceInvaders\SFMLFramework\SFMLFramework\Game.cpp(103,23): warning C4018: '<': signed/unsigned mismatch
-D:\PROJECTS\PROJECTS - C++\SpaceInvaders\SFMLFramework\SFMLFramework\Game.cpp(113,23): warning C4018: '<': signed/unsigned mismatch
+﻿  Background.cpp
   Generating code
-  2 of 454 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
+  2 of 462 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+    1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   SFMLFramework.vcxproj -> D:\PROJECTS\PROJECTS - C++\SpaceInvaders\SFMLFramework\Release\SFMLFramework.exe

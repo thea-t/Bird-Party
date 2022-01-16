@@ -1,5 +1,5 @@
 #include "TextureLoader.h"
-
+#include <iostream>
 
 TextureLoader::TextureLoader()
 {
@@ -7,24 +7,48 @@ TextureLoader::TextureLoader()
 }
 
 // how to load textures from path: https://stackoverflow.com/questions/17436544/load-an-image-from-a-relative-path-in-sfml
-void TextureLoader::loadTextures(Player* player, EnemyManager* enemyManager)
+void TextureLoader::loadTextures(Player* player, EnemyManager* enemyManager, UIManager* uiManager, Background* background)
 {
+	// load the heart textures.
+	uiManager->heartTexture.loadFromFile("Textures/heart.png");
+	for (size_t i = 0; i < 3; i++)
+	{
+		setOrigin(&uiManager->heartTexture, &uiManager->heartSprite[i]);
+		uiManager->heartSprite[i].setTexture(uiManager->heartTexture);
+	}
+
+	// load the background textures
+	for (size_t i = 0; i < 7; i++)
+	{
+		// how to convert string to char* https://stackoverflow.com/questions/7352099/stdstring-to-char/7352131
+		int index = i;
+		std::string temp = "Textures/Background1/" + std::to_string(index) + ".png";
+		const char* path = temp.c_str();
+		background->level1Backgrounds[i].load(path);
+		background->level1Backgrounds[i].setPosition(k_arenaWidth /2, k_arenaHeight / 2);
+		background->level1Backgrounds[i].setScale(0.8f, 0.8f);
+	}
+
+	//load the platform that player stands on
+	background->platform.load("Textures/platform.png");
+	background->platform.setScale(0.57,0.3);
+	background->platform.setPosition(player->getPosition().x, k_arenaHeight- 50);
 
 	// load the player textures
-	player->idleTexture.loadFromFile("player_idle.png");
-	player->move1Texture.loadFromFile("player_move_1.png");
-	player->move2Texture.loadFromFile("player_move_2.png");
-	player->shootTexture.loadFromFile("player_shoot.png");
+	player->idleTexture.loadFromFile("Textures/player_idle.png");
+	player->move1Texture.loadFromFile("Textures/player_move_1.png");
+	player->move2Texture.loadFromFile("Textures/player_move_2.png");
+	player->shootTexture.loadFromFile("Textures/player_shoot.png");
 
 	// set the origin point of the sprite to the center of the texture.
 	// note that all player textures have the same resolution.
 	setOrigin(&player->idleTexture, player);
 
 	// load player projectile texture
-	player->projectileTexture.loadFromFile("projectile_player.png");
+	player->projectileTexture.loadFromFile("Textures/projectile_player.png");
 
 	// load enemy projectile texture
-	enemyManager->projectileTexture.loadFromFile("projectile_enemy.png");
+	enemyManager->projectileTexture.loadFromFile("Textures/projectile_enemy.png");
 
 
 	// set all player projectiles the same texture
@@ -47,12 +71,13 @@ void TextureLoader::loadTextures(Player* player, EnemyManager* enemyManager)
 	// load enemy textures
 	for (size_t i = 0; i < enemyManager->aliveEnemies.size(); i++)
 	{
-		enemyManager->aliveEnemies[i].move1Texture.loadFromFile("basic-enemy-1.png");
-		enemyManager->aliveEnemies[i].move2Texture.loadFromFile("basic-enemy-2.png");
+		enemyManager->aliveEnemies[i].move1Texture.loadFromFile("Textures/basic-enemy-1.png");
+		enemyManager->aliveEnemies[i].move2Texture.loadFromFile("Textures/basic-enemy-2.png");
 
 		enemyManager->aliveEnemies[i].setTexture(enemyManager->aliveEnemies[i].move1Texture);
 		setOrigin(&enemyManager->aliveEnemies[i].move1Texture, &enemyManager->aliveEnemies[i]);
 	}
+
 
 }
 

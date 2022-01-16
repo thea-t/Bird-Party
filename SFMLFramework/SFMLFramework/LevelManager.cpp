@@ -15,7 +15,7 @@ LevelManager::LevelManager()
 
 void LevelManager::loadLevel( int level )
 {
-	std::string levelPath = "Level" + std::to_string(level) + ".txt";
+	std::string levelPath = "Levels/Level" + std::to_string(level) + ".txt";
 	std::string levelString = readFileIntoString(levelPath);
 	std::vector<std::string> splittedString = splitString(levelString);
 

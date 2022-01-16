@@ -5,11 +5,13 @@
 
 Player::Player()
 {
-	m_delayBetweenSteps = 0.1;
-	m_delayBetweenAttacks = 0.5;
+	m_delayBetweenSteps = 0.1f;
+	m_delayBetweenAttacks = 0.5f;
+
+	currentHealth = maxHealth;
 
 	this->setScale(0.2, 0.2);
-	this->setPosition(k_windowWidth / 2, k_windowHeight - 100);
+	this->setPosition(k_windowWidth / 2, k_windowHeight - 130);
 }
 
 Player::~Player()

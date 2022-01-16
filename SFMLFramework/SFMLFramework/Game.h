@@ -8,6 +8,9 @@
 #include "Player.h"
 #include "EnemyManager.h"
 #include "LevelManager.h"
+#include "AudioLoader.h"
+#include "Background.h"
+#include "UIManager.h"
 //class comment
 namespace sf
 {
@@ -24,9 +27,13 @@ private:
 
 	// This is the player instance
 	Player m_player;
+	UIManager m_uiManager;
 	TextureLoader m_TextureLoader;
+	//AudioLoader m_audioLoader;
 	LevelManager m_levelManager;
 	EnemyManager m_enemyManager;
+	Background m_background;
+
 	void handleWindowsEvents();
 
 

@@ -26,6 +26,9 @@ public:
 	~Player();
 
 	int projectileIndex;
+	const int maxHealth = 3;
+	int currentHealth;
+
 	PlayerProjectile projectiles[100];
 
 	sf::Texture idleTexture;

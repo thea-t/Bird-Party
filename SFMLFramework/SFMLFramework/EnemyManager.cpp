@@ -63,7 +63,6 @@ void EnemyManager::update(float deltaTime)
 
 	if (shootTime <= m_timePassedSinceLastShoot) {
 
-		std::cout << shootTime << "\n";
 		shootProjectile();
 		m_timePassedSinceLastShoot = 0;
 	}

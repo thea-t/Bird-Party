@@ -17,6 +17,7 @@ public:
 	~EnemyProjectile();
 
 	sf::Sprite* pPlayerSprite;
+	int* pPlayerHealth;
 
 };
 

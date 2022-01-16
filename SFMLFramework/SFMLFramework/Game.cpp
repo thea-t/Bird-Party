@@ -9,7 +9,7 @@
 Game::Game()
 	: m_pWindow( nullptr )
 {
-	m_pWindow = new sf::RenderWindow( sf::VideoMode( k_windowWidth, k_windowHeight ), "Falconry" );
+	m_pWindow = new sf::RenderWindow( sf::VideoMode( k_windowWidth, k_windowHeight ), "Falconry");
 
 	// Setup Window frame-rate setting
 	m_pWindow->setFramerateLimit( 60 );
@@ -44,12 +44,13 @@ void Game::run()
 	{
 		m_player.projectiles[i].pEnemyManager = &m_enemyManager;
 		m_enemyManager.projectiles[i].pPlayerSprite = &m_player;
+		m_enemyManager.projectiles[i].pPlayerHealth = &m_player.currentHealth;
 	}
 	m_levelManager.pEnemyManager = &m_enemyManager;
-
+	m_uiManager.pPlayer = &m_player;
 	m_levelManager.loadLevel(0);
-	m_TextureLoader.loadTextures(&m_player, &m_enemyManager);
-
+	m_TextureLoader.loadTextures(&m_player, &m_enemyManager, &m_uiManager, &m_background);
+	//m_audioLoader.LoadAudio("Audios/Menu #8 (Looped)");
 	while( m_pWindow->isOpen() )
 	{
 		// Handle all Windows events
@@ -73,11 +74,15 @@ void Game::run()
 
 void Game::update( float deltaTime )
 {
+
 	// update the player
 	m_player.update( deltaTime );
 
 	// update the enemy manager
 	m_enemyManager.update( deltaTime );
+
+	// update the background
+	m_background.update( deltaTime );
 
 	// update the enemies
 	for (size_t i = 0; i < m_enemyManager.aliveEnemies.size(); i++)
@@ -98,6 +103,9 @@ void Game::update( float deltaTime )
 //function comments
 void Game::render()
 {
+	m_background.draw( m_pWindow );
+
+
 	m_pWindow->draw( m_player );
 
 	for (size_t i = 0; i < m_enemyManager.projectileIndex; i++)
@@ -116,5 +124,6 @@ void Game::render()
 	}
 
 
+	m_uiManager.draw(m_pWindow);
 }
 
