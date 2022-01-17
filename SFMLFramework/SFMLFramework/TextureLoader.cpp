@@ -18,7 +18,7 @@ void TextureLoader::loadTextures(Player* player, EnemyManager* enemyManager, UIM
 	}
 
 	// load the background textures
-	for (size_t i = 0; i < 7; i++)
+	for (size_t i = 0; i < 6; i++)
 	{
 		// how to convert string to char* https://stackoverflow.com/questions/7352099/stdstring-to-char/7352131
 		int index = i;
@@ -32,7 +32,7 @@ void TextureLoader::loadTextures(Player* player, EnemyManager* enemyManager, UIM
 	//load the platform that player stands on
 	background->platform.load("Textures/platform.png");
 	background->platform.setScale(0.57,0.3);
-	background->platform.setPosition(player->getPosition().x, k_arenaHeight- 50);
+	background->platform.setPosition(player->getPosition().x, k_arenaHeight- 40);
 
 	// load the player textures
 	player->idleTexture.loadFromFile("Textures/player_idle.png");

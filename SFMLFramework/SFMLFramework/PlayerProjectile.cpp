@@ -3,13 +3,13 @@
 PlayerProjectile::PlayerProjectile()
 {
 	speed = -150.0f;
-	setScale(0.03f, 0.03f);
+	setScale(0.3f, 0.3f);
 }
 
 PlayerProjectile::PlayerProjectile(sf::Vector2f position)
 {
 	speed = -150.0f;
-	setScale(0.03f, 0.03f);
+	setScale(0.3f, 0.3f);
 	setPosition(position);
 }
 
@@ -40,6 +40,24 @@ void PlayerProjectile::checkCollision()
 
 			// set the position of the projectile very far away.
 			setPosition(k_arenaWidth * k_arenaWidth, k_arenaHeight * k_arenaHeight);
+
+			break;
+		}
+	}
+
+	for (size_t i = 0; i < 100 ; i++)
+	{
+		EnemyProjectile* enemyProjectile = &pEnemyManager->projectiles[i];
+		sf::Vector2f enemyProjectilePosition = enemyProjectile->getPosition();
+		float enemyProjectileRadius = getRadius(enemyProjectile);
+
+		float distance = getDistance(&pos, &enemyProjectilePosition); 
+		
+		if (radius + enemyProjectileRadius >= distance) {
+			
+			// set the position of the projectile very far away.
+			setPosition(k_arenaWidth * k_arenaWidth, k_arenaHeight * k_arenaHeight);
+			enemyProjectile->setPosition(k_arenaWidth * k_arenaWidth, k_arenaHeight * k_arenaHeight);
 
 			break;
 		}
