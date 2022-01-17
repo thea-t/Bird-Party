@@ -11,6 +11,8 @@
 #include "AudioLoader.h"
 #include "Background.h"
 #include "UIManager.h"
+#include "ScoreManager.h"
+
 //class comment
 namespace sf
 {
@@ -33,6 +35,7 @@ private:
 	LevelManager m_levelManager;
 	EnemyManager m_enemyManager;
 	Background m_background;
+	ScoreManager m_scoreManager;
 
 	void handleWindowsEvents();
 

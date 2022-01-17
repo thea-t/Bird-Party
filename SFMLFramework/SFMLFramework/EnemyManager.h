@@ -5,6 +5,7 @@
 #include "Enemy.h"
 #include "EnemyType.h"
 #include "Settings.h"
+#include "ScoreManager.h"
 
 
 class EnemyManager
@@ -24,6 +25,8 @@ public:
 	std::vector<Enemy> aliveEnemies;
 	EnemyProjectile projectiles[100];
 	sf::Texture projectileTexture;
+
+	ScoreManager* pScoreManager;
 
 	void instantiateEnemy( EnemyType type, int xPos, int yPos );
 	void refreshEnemies();

@@ -7,7 +7,7 @@
 class Background
 {
 private:
-	const int m_cloudSpeed = 55;
+	const int m_cloudSpeed = 20;
 public:
 	Background();
 

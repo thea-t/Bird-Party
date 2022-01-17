@@ -7,7 +7,7 @@ Background::Background()
 
 void Background::draw(sf::RenderWindow* pWindow)
 {
-	for (size_t i = 0; i < 7; i++)
+	for (size_t i = 0; i < 6; i++)
 	{
 		pWindow->draw(level1Backgrounds[i]);
 	}

@@ -19,16 +19,20 @@ private:
 	void animate( float deltaTime );
 
 protected:
+
+	int m_scoreGainedOnDeath;
+
 	EnemyManager* pEnemyManager;
 public:
 	Enemy();
-	Enemy(EnemyManager* enemyManager);
+	Enemy( EnemyManager* enemyManager );
 	~Enemy();
 
 	sf::Texture move1Texture;
 	sf::Texture move2Texture;
 	
 	void update( float deltaTime );
+	void onHit(int hitEnemyIndex);
 };
 
 #endif

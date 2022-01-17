@@ -5,12 +5,14 @@
 
 Enemy::Enemy()
 {
+	m_scoreGainedOnDeath = 50;
 	m_movementSpeed = 50;
 	m_minDelayBetweenSteps = 0.2f;
 	m_maxDelayBetweenSteps = 1.0f;
 }
-Enemy::Enemy(EnemyManager* enemyManager)
+Enemy::Enemy( EnemyManager* enemyManager )
 {
+	m_scoreGainedOnDeath = 50;
 	m_movementSpeed = 50;
 	m_minDelayBetweenSteps = 0.2f;
 	m_maxDelayBetweenSteps = 1.0f;
@@ -21,13 +23,25 @@ Enemy::~Enemy()
 {
 }
 
-void Enemy::update(float deltaTime)
+void Enemy::update( float deltaTime )
 {
-	move( deltaTime );
+	move(deltaTime);
 
 	animate(deltaTime);
 }
-void Enemy::move( float deltaTime )
+void Enemy::onHit( int hitEnemyIndex )
+{
+
+	// how to remove element from a vector: https://www.cplusplus.com/reference/vector/vector/erase/
+	// does erasing automatically destroy the object: https://stackoverflow.com/questions/6353149/does-vectorerase-on-a-vector-of-object-pointers-destroy-the-object-itself#:~:text=Removes%20from%20the%20vector%20container,take%20ownership%20of%20destroying%20it.
+	pEnemyManager->aliveEnemies.erase(pEnemyManager->aliveEnemies.begin() + hitEnemyIndex);
+
+	// refreshing the enemies by setting their textures as a fix for flashing enemy textures when an enemy is destroyed.
+	pEnemyManager->refreshEnemies();
+
+	pEnemyManager->pScoreManager->addScore( m_scoreGainedOnDeath );
+}
+void Enemy::move(float deltaTime)
 {
 	if (pEnemyManager->isMovingLeft) {
 		setPosition(getPosition().x - (m_movementSpeed * deltaTime), getPosition().y);
@@ -56,16 +70,17 @@ void Enemy::move( float deltaTime )
 				pEnemyManager->aliveEnemies[i].setScale(-pEnemyManager->aliveEnemies[i].getScale().x, pEnemyManager->aliveEnemies[i].getScale().y);
 				pEnemyManager->aliveEnemies[i].setPosition(pEnemyManager->aliveEnemies[i].getPosition().x, pEnemyManager->aliveEnemies[i].getPosition().y + 35);
 			}
-		}
+		}    
 	}
 }
+
 void Enemy::animate(float deltaTime)
 {
 	m_timePassedBetweenSteps += deltaTime;
 
 	// how to get a random value between two values: https://www.cplusplus.com/reference/cstdlib/rand/
 	// i multiplied it by 100 in order to use it as integer and then divided it later to get it as float because random only works with integers.
-	float randomDelay = ((float)(rand() % (int)(m_maxDelayBetweenSteps* 100) + (int)(m_minDelayBetweenSteps * 100))) / 100;
+	float randomDelay = ((float)(rand() % (int)(m_maxDelayBetweenSteps * 100) + (int)(m_minDelayBetweenSteps * 100))) / 100;
 
 	if (m_timePassedBetweenSteps >= randomDelay) {
 

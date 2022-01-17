@@ -19,7 +19,7 @@ void EnemyManager::instantiateEnemy( EnemyType type , int xPos, int yPos)
 		BasicEnemy* basicEnemy = new BasicEnemy(this);
 		basicEnemy->setScale(0.1, 0.1);
 		// TODO: come up with something better that suits multiple lines being instantiated
-		basicEnemy->setPosition(xPos* 80 + 50, yPos * 70 + 50);
+		basicEnemy->setPosition(xPos* 80 + 50, yPos * 70 + 80);
 		aliveEnemies.push_back(*basicEnemy);
 	}
 	/*else if (type == Bonus) {

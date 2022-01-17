@@ -1,11 +1,9 @@
-﻿  PlayerProjectile.cpp
-  TextureLoader.cpp
-C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\TextureLoader.cpp(34,40): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\TextureLoader.cpp(57,23): warning C4018: '<': signed/unsigned mismatch
-C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\TextureLoader.cpp(65,23): warning C4018: '<': signed/unsigned mismatch
+﻿  UIManager.cpp
+D:\PROJECTS\PROJECTS - C++\SpaceInvaders\SFMLFramework\SFMLFramework\UIManager.cpp(7,33): warning C4244: 'argument': conversion from 'size_t' to 'float', possible loss of data
+D:\PROJECTS\PROJECTS - C++\SpaceInvaders\SFMLFramework\SFMLFramework\UIManager.cpp(23,23): warning C4018: '<': signed/unsigned mismatch
   Generating code
-  2 of 462 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
+  1 of 475 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    2 functions had inline decision re-evaluated but remain unchanged
+    1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  SFMLFramework.vcxproj -> C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\Release\SFMLFramework.exe
+  SFMLFramework.vcxproj -> D:\PROJECTS\PROJECTS - C++\SpaceInvaders\SFMLFramework\Release\SFMLFramework.exe

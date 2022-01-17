@@ -158,6 +158,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerProjectile.cpp" />
     <ClCompile Include="Projectile.cpp" />
+    <ClCompile Include="ScoreManager.cpp" />
     <ClCompile Include="TextureLoader.cpp" />
     <ClCompile Include="UIManager.cpp" />
   </ItemGroup>
@@ -176,6 +177,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerProjectile.h" />
     <ClInclude Include="Projectile.h" />
+    <ClInclude Include="ScoreManager.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="TextureLoader.h" />
     <ClInclude Include="UIManager.h" />

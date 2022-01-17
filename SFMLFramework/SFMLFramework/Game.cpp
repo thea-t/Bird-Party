@@ -48,6 +48,9 @@ void Game::run()
 	}
 	m_levelManager.pEnemyManager = &m_enemyManager;
 	m_uiManager.pPlayer = &m_player;
+	m_uiManager.pScoreManager = &m_scoreManager;
+	m_enemyManager.pScoreManager = &m_scoreManager;
+
 	m_levelManager.loadLevel(0);
 	m_TextureLoader.loadTextures(&m_player, &m_enemyManager, &m_uiManager, &m_background);
 	//m_audioLoader.LoadAudio("Audios/Menu #8 (Looped)");
