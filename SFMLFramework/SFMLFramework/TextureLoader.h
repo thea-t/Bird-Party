@@ -15,7 +15,9 @@ private:
 public:
 	TextureLoader();
 
+
 	// how to swap textures: https://en.sfml-dev.org/forums/index.php?topic=11382.0
 	void loadTextures( Player* player, EnemyManager* enemyManager, UIManager* uiManager, Background* background);
+
 };
 #endif

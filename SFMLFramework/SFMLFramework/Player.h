@@ -5,7 +5,7 @@
 #include "PlayerProjectile.h"
 #include <vector>
 
-class PlayerProjectile;
+//class PlayerProjectile;
 
 class Player : public GameSprite
 {

@@ -6,6 +6,7 @@
 #include "EnemyType.h"
 #include "Settings.h"
 #include "ScoreManager.h"
+#include "GameState.h"
 
 
 class EnemyManager
@@ -26,6 +27,7 @@ public:
 	EnemyProjectile projectiles[100];
 	sf::Texture projectileTexture;
 
+	GameState* pGameState;
 	ScoreManager* pScoreManager;
 
 	void instantiateEnemy( EnemyType type, int xPos, int yPos );

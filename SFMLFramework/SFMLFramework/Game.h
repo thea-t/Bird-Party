@@ -3,6 +3,8 @@
 
 #include <SFML/Graphics/CircleShape.hpp>
 #include <SFML/System/Clock.hpp>
+#include <iostream>
+#include <SFML/Graphics.hpp>
 
 #include "TextureLoader.h"
 #include "Player.h"
@@ -12,6 +14,9 @@
 #include "Background.h"
 #include "UIManager.h"
 #include "ScoreManager.h"
+#include "GameState.h"
+#include "Settings.h"
+#include "Helpers.h"
 
 //class comment
 namespace sf
@@ -27,11 +32,13 @@ private:
 	// This is the clock used for timing
 	sf::Clock m_clock;
 
+	GameState m_gameState;
+
 	// This is the player instance
 	Player m_player;
 	UIManager m_uiManager;
 	TextureLoader m_TextureLoader;
-	//AudioLoader m_audioLoader;
+	AudioLoader m_audioLoader;
 	LevelManager m_levelManager;
 	EnemyManager m_enemyManager;
 	Background m_background;

@@ -4,7 +4,8 @@ AudioLoader::AudioLoader() {
 
 }
 
-void AudioLoader::LoadAudio(std::string path)
+void AudioLoader::loadAudio(std::string path)
 {
 	backgroundMusic.openFromFile(path);
+	backgroundMusic.play();
 }

@@ -1,16 +1,27 @@
-﻿  BasicEnemy.cpp
-  Enemy.cpp
-  ForestLevelData.cpp
-C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\ForestLevelData.cpp(11,23): warning C4018: '<': signed/unsigned mismatch
-  Game.cpp
-C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\Game.cpp(69,23): warning C4018: '<': signed/unsigned mismatch
-C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\Game.cpp(80,23): warning C4018: '<': signed/unsigned mismatch
-  LevelData.cpp
-  LevelManager.cpp
-C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\LevelManager.cpp(14,23): warning C4018: '<': signed/unsigned mismatch
-C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\LevelManager.cpp(16,24): warning C4018: '<': signed/unsigned mismatch
-C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\LevelManager.cpp(22,30): warning C4244: 'argument': conversion from 'size_t' to 'float', possible loss of data
-C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\LevelManager.cpp(22,28): warning C4244: 'argument': conversion from 'size_t' to 'float', possible loss of data
+﻿  Game.cpp
+C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\GameState.h(4,22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\GameState.h(4,11): error C2146: syntax error: missing ';' before identifier 'k_gameState'
+C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\Game.cpp(44,2): error C2065: 'k_gameState': undeclared identifier
+C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\Game.cpp(88,6): error C2065: 'k_gameState': undeclared identifier
+C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\Game.cpp(107,24): warning C4018: '<': signed/unsigned mismatch
+C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\Game.cpp(119,6): error C2065: 'k_gameState': undeclared identifier
+C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\Game.cpp(122,11): error C2065: 'k_gameState': undeclared identifier
+C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\Game.cpp(127,24): warning C4018: '<': signed/unsigned mismatch
+C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\Game.cpp(137,24): warning C4018: '<': signed/unsigned mismatch
   Main.cpp
+C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\GameState.h(4,22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\GameState.h(4,11): error C2146: syntax error: missing ';' before identifier 'k_gameState'
+  TextureLoader.cpp
+C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\GameState.h(4,22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\GameState.h(4,11): error C2146: syntax error: missing ';' before identifier 'k_gameState'
+C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\TextureLoader.cpp(34,40): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\TextureLoader.cpp(57,23): warning C4018: '<': signed/unsigned mismatch
+C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\TextureLoader.cpp(65,23): warning C4018: '<': signed/unsigned mismatch
+  UIManager.cpp
+C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\GameState.h(4,22): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\GameState.h(4,11): error C2146: syntax error: missing ';' before identifier 'k_gameState'
+C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\UIManager.cpp(7,33): warning C4244: 'argument': conversion from 'size_t' to 'float', possible loss of data
+C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\UIManager.cpp(23,23): warning C4018: '<': signed/unsigned mismatch
+C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\UIManager.cpp(35,6): error C2065: 'k_gameState': undeclared identifier
+C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\UIManager.cpp(37,4): error C2065: 'k_gameState': undeclared identifier
   Generating Code...
-  SFMLFramework.vcxproj -> C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\Debug\SFMLFramework.exe

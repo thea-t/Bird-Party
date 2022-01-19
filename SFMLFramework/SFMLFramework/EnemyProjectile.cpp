@@ -34,10 +34,13 @@ void EnemyProjectile::checkCollision()
 		// set the position of the projectile very far away.
 		setPosition(k_arenaWidth * k_arenaWidth, k_arenaHeight * k_arenaHeight);
 
-		int temp = *pPlayerHealth;
+		int temp = *m_pPlayerHealth;
 		temp--;
-		*pPlayerHealth = temp;
-		std::cout << *pPlayerHealth;
+		*m_pPlayerHealth = temp;
+
+		if (temp <= 0) {
+			*pGameState = GameState::Lose;
+		}
 	}
 }
 

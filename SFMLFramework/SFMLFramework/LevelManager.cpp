@@ -33,7 +33,6 @@ void LevelManager::loadLevel( int level )
 				// how to convert string to int : https://stackoverflow.com/questions/5029840/convert-char-to-int-in-c-and-c
 				int enemyType = splittedString[y][x] - '0';
 
-				std::cout << enemyType;
 				// how to convert int to enum class: https://stackoverflow.com/questions/11452920/how-to-cast-int-to-enum-in-c
 				pEnemyManager->instantiateEnemy(static_cast<EnemyType>(enemyType), x, y);
 
@@ -48,7 +47,27 @@ void LevelManager::loadLevel( int level )
 void LevelManager::onLevelComplete()
 {
 	m_currentLevel++;
-	loadLevel( m_currentLevel );
+	if (m_currentLevel == 5) {
+		// game over
+		*pGameState = GameState::End;
+		m_currentLevel = 0;
+	}
+	else {
+		loadLevel(m_currentLevel);
+
+		// reload enemy textures
+		for (size_t i = 0; i < pEnemyManager->aliveEnemies.size(); i++)
+		{
+			pEnemyManager->aliveEnemies[i].move1Texture.loadFromFile(pEnemyManager->aliveEnemies[i].move1TexturePath);
+			pEnemyManager->aliveEnemies[i].move2Texture.loadFromFile(pEnemyManager->aliveEnemies[i].move2TexturePath);
+
+
+			pEnemyManager->aliveEnemies[i].setTexture(pEnemyManager->aliveEnemies[i].move1Texture);
+			sf::Vector2u textureDimensions = pEnemyManager->aliveEnemies[i].move1Texture.getSize();
+			pEnemyManager->aliveEnemies[i].setOrigin(static_cast<float>(textureDimensions.x / 2),
+				static_cast<float>(textureDimensions.y / 2));
+		}
+	}
 }
 
 // how to read .txt files: https://www.delftstack.com/howto/cpp/read-file-into-string-cpp/

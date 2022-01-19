@@ -14,7 +14,7 @@ public:
 
 	AudioLoader();
 
-	void LoadAudio( std::string path );
+	void loadAudio( std::string path );
 };
 
 #endif

@@ -41,6 +41,8 @@ void Enemy::onHit( int hitEnemyIndex )
 
 	pEnemyManager->pScoreManager->addScore( m_scoreGainedOnDeath );
 }
+
+
 void Enemy::move(float deltaTime)
 {
 	if (pEnemyManager->isMovingLeft) {

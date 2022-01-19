@@ -3,6 +3,8 @@
 
 #include <SFML/Graphics.hpp>
 #include "GameSprite.h"
+#include "GameState.h"
+#include "LevelManager.h"
 
 class Background
 {
@@ -14,16 +16,19 @@ public:
 
 	GameSprite menuBackground;
 	GameSprite level1Backgrounds[6];
-	GameSprite level2Backgrounds[7];
-	GameSprite level3Backgrounds[8];
+	GameSprite level2Backgrounds[5];
+	GameSprite level3Backgrounds[7];
 	GameSprite level4Backgrounds[5];
 	GameSprite level5Backgrounds[7];
 
 	GameSprite platform;
 
+	LevelManager* pLevelManager;
 
-	void draw(sf::RenderWindow* pWindow);
-	void update( float deltaTime );
+
+	void draw(sf::RenderWindow* pWindow, GameState* gameState);
+	void update(float deltaTime, GameState* gameState);
 
 };
 #endif
+	

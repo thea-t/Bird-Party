@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include "EnemyManager.h"
+#include "GameState.h"
 
 class LevelManager
 {
@@ -15,10 +16,21 @@ private:
 public:
 	LevelManager();
 
+	void setCurrentLevel(int level)
+	{
+		m_currentLevel = level;
+	}
+	int getCurrentLevel()
+	{
+		return m_currentLevel;
+	}
+
 	void loadLevel( int level );
 	void onLevelComplete();
 
 	EnemyManager* pEnemyManager;
+	GameState* pGameState;
+
 };
 
 #endif

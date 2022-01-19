@@ -172,6 +172,7 @@
     <ClInclude Include="EnemyType.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameSprite.h" />
+    <ClInclude Include="GameState.h" />
     <ClInclude Include="Helpers.h" />
     <ClInclude Include="LevelManager.h" />
     <ClInclude Include="Player.h" />

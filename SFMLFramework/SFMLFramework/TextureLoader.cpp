@@ -28,6 +28,42 @@ void TextureLoader::loadTextures(Player* player, EnemyManager* enemyManager, UIM
 		background->level1Backgrounds[i].setPosition(k_arenaWidth /2, k_arenaHeight / 2);
 		background->level1Backgrounds[i].setScale(0.8f, 0.8f);
 	}
+	for (size_t i = 0; i < 5; i++)
+	{
+		int index = i;
+		std::string temp = "Textures/Background2/" + std::to_string(index) + ".png";
+		const char* path = temp.c_str();
+		background->level2Backgrounds[i].load(path);
+		background->level2Backgrounds[i].setPosition(k_arenaWidth /2, k_arenaHeight / 2);
+		background->level2Backgrounds[i].setScale(0.8f, 0.8f);
+	}
+	for (size_t i = 0; i < 7; i++)
+	{
+		int index = i;
+		std::string temp = "Textures/Background3/" + std::to_string(index) + ".png";
+		const char* path = temp.c_str();
+		background->level3Backgrounds[i].load(path);
+		background->level3Backgrounds[i].setPosition(k_arenaWidth /2, k_arenaHeight / 2);
+		background->level3Backgrounds[i].setScale(0.8f, 0.8f);
+	}
+	for (size_t i = 0; i < 5; i++)
+	{
+		int index = i;
+		std::string temp = "Textures/Background4/" + std::to_string(index) + ".png";
+		const char* path = temp.c_str();
+		background->level4Backgrounds[i].load(path);
+		background->level4Backgrounds[i].setPosition(k_arenaWidth /2, k_arenaHeight / 2);
+		background->level4Backgrounds[i].setScale(0.8f, 0.8f);
+	}
+	for (size_t i = 0; i < 7; i++)
+	{
+		int index = i;
+		std::string temp = "Textures/Background5/" + std::to_string(index) + ".png";
+		const char* path = temp.c_str();
+		background->level5Backgrounds[i].load(path);
+		background->level5Backgrounds[i].setPosition(k_arenaWidth /2, k_arenaHeight / 2);
+		background->level5Backgrounds[i].setScale(0.8f, 0.8f);
+	}
 
 	//load the platform that player stands on
 	background->platform.load("Textures/platform.png");
@@ -71,15 +107,16 @@ void TextureLoader::loadTextures(Player* player, EnemyManager* enemyManager, UIM
 	// load enemy textures
 	for (size_t i = 0; i < enemyManager->aliveEnemies.size(); i++)
 	{
-		enemyManager->aliveEnemies[i].move1Texture.loadFromFile("Textures/basic-enemy-1.png");
-		enemyManager->aliveEnemies[i].move2Texture.loadFromFile("Textures/basic-enemy-2.png");
+		enemyManager->aliveEnemies[i].move1Texture.loadFromFile(enemyManager->aliveEnemies[i].move1TexturePath);
+		enemyManager->aliveEnemies[i].move2Texture.loadFromFile(enemyManager->aliveEnemies[i].move2TexturePath);
+
 
 		enemyManager->aliveEnemies[i].setTexture(enemyManager->aliveEnemies[i].move1Texture);
 		setOrigin(&enemyManager->aliveEnemies[i].move1Texture, &enemyManager->aliveEnemies[i]);
 	}
 
-
 }
+
 
 void TextureLoader::setOrigin(sf::Texture* texture, sf::Transformable* object)
 {

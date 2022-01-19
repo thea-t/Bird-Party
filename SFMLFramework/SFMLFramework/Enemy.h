@@ -28,6 +28,8 @@ public:
 	Enemy( EnemyManager* enemyManager );
 	~Enemy();
 
+	const char* move1TexturePath;
+	const char* move2TexturePath;
 	sf::Texture move1Texture;
 	sf::Texture move2Texture;
 	

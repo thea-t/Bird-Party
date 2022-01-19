@@ -17,10 +17,11 @@ void EnemyManager::instantiateEnemy( EnemyType type , int xPos, int yPos)
 	if ( type == Basic)
 	{
 		BasicEnemy* basicEnemy = new BasicEnemy(this);
-		basicEnemy->setScale(0.1, 0.1);
-		// TODO: come up with something better that suits multiple lines being instantiated
+		basicEnemy->setScale(0.1f, 0.1f);
 		basicEnemy->setPosition(xPos* 80 + 50, yPos * 70 + 80);
 		aliveEnemies.push_back(*basicEnemy);
+
+		std::cout << aliveEnemies.size() << "\n";
 	}
 	/*else if (type == Bonus) {
 
@@ -41,6 +42,10 @@ void EnemyManager::instantiateEnemy( EnemyType type , int xPos, int yPos)
 
 void EnemyManager::refreshEnemies()
 {
+	if (aliveEnemies.size() == 0) {
+		*pGameState = GameState::Win;
+	}
+
 	for (size_t i = 0; i < aliveEnemies.size(); i++)
 	{
 		// how to get a random boolean: https://stackoverflow.com/questions/43329352/generating-random-boolean/43329456
@@ -63,7 +68,9 @@ void EnemyManager::update(float deltaTime)
 
 	if (shootTime <= m_timePassedSinceLastShoot) {
 
-		shootProjectile();
+		if (aliveEnemies.size() > 0) {
+			shootProjectile();
+		}
 		m_timePassedSinceLastShoot = 0;
 	}
 

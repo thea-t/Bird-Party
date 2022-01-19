@@ -39,8 +39,6 @@ void PlayerProjectile::checkCollision()
 			// set the position of the projectile very far away.
 			setPosition(k_arenaWidth * k_arenaWidth, k_arenaHeight * k_arenaHeight);
 
-
-
 			break;
 		}
 	}
