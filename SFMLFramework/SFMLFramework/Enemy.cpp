@@ -25,7 +25,7 @@ Enemy::~Enemy()
 
 void Enemy::update( float deltaTime )
 {
-	move(deltaTime);
+	move( deltaTime );
 
 	animate(deltaTime);
 }
@@ -48,7 +48,7 @@ void Enemy::move(float deltaTime)
 	if (pEnemyManager->isMovingLeft) {
 		setPosition(getPosition().x - (m_movementSpeed * deltaTime), getPosition().y);
 
-		if (getPosition().x <= 0) {
+		if (getPosition().x <= move1Texture.getSize().x / 2) {
 
 
 			// cannot convert bool to bool*: https://stackoverflow.com/questions/2939286/error-c2440-cannot-convert-from-bool-to-bool/2939292
@@ -63,7 +63,7 @@ void Enemy::move(float deltaTime)
 	else {
 		setPosition(getPosition().x + (m_movementSpeed * deltaTime), getPosition().y);
 
-		if (getPosition().x >= k_arenaWidth) {
+		if (getPosition().x >= k_arenaWidth + move1Texture.getSize().x / 2) {
 
 
 			pEnemyManager->isMovingLeft = true;
