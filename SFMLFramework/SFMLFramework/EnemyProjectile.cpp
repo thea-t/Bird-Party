@@ -39,7 +39,7 @@ void EnemyProjectile::checkCollision()
 		*m_pPlayerHealth = temp;
 
 		if (temp <= 0) {
-			*pGameState = GameState::Lose;
+			*pGameState = GameState::End;
 		}
 	}
 }

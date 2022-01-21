@@ -11,6 +11,14 @@ class Background
 private:
 	const int m_cloudSpeed = 20;
 public:
+//#######################################################
+//    Function    :     Constructor
+//    Purpose        :    Initializes the background.
+//    Parameters    :    None
+//    Returns        :    None
+//    Notes        :     None
+//    See also    :    Game::run();
+//#######################################################
 	Background();
 
 
@@ -25,8 +33,24 @@ public:
 
 	LevelManager* pLevelManager;
 
-
+//#######################################################
+//    Function    :    Draw
+//    Purpose        :    Draws the background sprites.
+//    Parameters    :    RenderWindow*, GameState*
+//    Returns        :    None
+//    Notes        :     None
+//    See also    :    Game::draw();
+//#######################################################
 	void draw(sf::RenderWindow* pWindow, GameState* gameState);
+
+//#######################################################
+//    Function    :    Update
+//    Purpose        :    Moves the clouds in the background.
+//    Parameters    :    None
+//    Returns        :    None
+//    Notes        :     None
+//    See also    :    Game::update();
+//#######################################################
 	void update(float deltaTime, GameState* gameState);
 
 };

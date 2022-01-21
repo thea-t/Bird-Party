@@ -3,7 +3,6 @@
 
 #include "GameSprite.h"
 #include "PlayerProjectile.h"
-#include <vector>
 
 //class PlayerProjectile;
 
@@ -18,10 +17,55 @@ private:
 	float m_timePassedBetweenAttacks;
 	float m_delayBetweenAttacks;
 
+//#######################################################
+//    Function    :    Animate
+//    Purpose        :    Switches players textures to create animations.
+//    Parameters    :    int, float
+//    Returns        :    None
+//    Notes        :     None
+//    See also    :    Player::update()
+//#######################################################
 	void animate( int animation, float deltaTime );
 
-public:
+//#######################################################
+//    Function    :    CheckCollision
+//    Purpose        :    Checks if the player collides with any enemies. If so, loses the game.
+//    Parameters    :    None
+//    Returns        :    None
+//    Notes        :     None
+//    See also    :    Player::update()
+//#######################################################
+	void checkCollision();
+	
+//#######################################################
+//    Function    :    GetRadius
+//    Purpose        :    Returns the radius of a sprite. Used to check collisions.
+//    Parameters    :    Sprite*
+//    Returns        :    float
+//    Notes        :     None
+//    See also    :    Player::checkCollision()
+//#######################################################
+	float getRadius(sf::Sprite* sprite);
 
+//#######################################################
+//    Function    :    GetDistance
+//    Purpose        :    Returns distance between two points. Used to check collisions.
+//    Parameters    :    Vector2f*, Vector2f*
+//    Returns        :    float
+//    Notes        :     None
+//    See also    :    Player::checkCollision()
+//#######################################################
+	float getDistance(sf::Vector2f* a, sf::Vector2f* b);
+
+public:
+//#######################################################
+//    Function    :    Constructor
+//    Purpose        :    Initializes the player
+//    Parameters    :    None
+//    Returns        :    None
+//    Notes        :     None
+//    See also    :    Game::run()
+//#######################################################
 	Player();
 	~Player();
 
@@ -37,7 +81,17 @@ public:
 	sf::Texture shootTexture;
 	sf::Texture projectileTexture;
 
+	std::vector<Enemy>* pAliveEnemies;
+	GameState* pGameState;
 
+//#######################################################
+//    Function    :    Update
+//    Purpose        :    Updates the player every frame. Checks for key input.
+//    Parameters    :    float
+//    Returns        :    None
+//    Notes        :     None
+//    See also    :    Game::update();
+//#######################################################
 	void update( float deltaTime );
 };
 

@@ -32,6 +32,7 @@ void Game::handleWindowsEvents()
 
 void Game::run()
 {
+
 	m_clock.restart();
 
 	m_gameState = GameState::Menu;
@@ -43,17 +44,20 @@ void Game::run()
 		m_enemyManager.projectiles[i].pGameState = &m_gameState;
 		m_enemyManager.projectiles[i].setPlayerHealth(&m_player.currentHealth);
 	}
+	m_levelManager.pAudioLoader = &m_audioLoader;
 	m_levelManager.pEnemyManager = &m_enemyManager;
 	m_uiManager.pPlayer = &m_player;
 	m_uiManager.pLevelManager = &m_levelManager;
 	m_uiManager.pScoreManager = &m_scoreManager;
 	m_enemyManager.pScoreManager = &m_scoreManager;
+	m_enemyManager.pAudioLoader = &m_audioLoader;
 	m_enemyManager.pGameState = &m_gameState;
 	m_background.pLevelManager = &m_levelManager;
+	m_player.pAliveEnemies = &m_enemyManager.aliveEnemies;
+	m_player.pGameState = &m_gameState;
 
 	m_levelManager.loadLevel(0);
 	m_TextureLoader.loadTextures(&m_player, &m_enemyManager, &m_uiManager, &m_background);
-	m_audioLoader.loadAudio("Audios/Menu #8 (Looped).wav");
 
 	while (m_pWindow->isOpen())
 	{
@@ -69,7 +73,7 @@ void Game::run()
 		update(elapsedTime);
 
 		// Render all objects
-		render();
+		draw();
 
 		// Display all rendered objects
 		m_pWindow->display();
@@ -78,6 +82,7 @@ void Game::run()
 
 void Game::update(float deltaTime)
 {
+
 	// update the background
 	m_background.update(deltaTime, &m_gameState);
 	m_uiManager.update(deltaTime, &m_gameState);
@@ -109,7 +114,7 @@ void Game::update(float deltaTime)
 
 }
 //function comments
-void Game::render()
+void Game::draw()
 {
 	m_background.draw(m_pWindow, &m_gameState);
 

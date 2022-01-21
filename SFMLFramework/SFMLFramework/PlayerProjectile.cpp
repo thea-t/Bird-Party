@@ -32,12 +32,10 @@ void PlayerProjectile::checkCollision()
 
 		if (radius + enemyRadius >= distance) {
 
-			pEnemyManager->aliveEnemies[i].onHit( i );
-
-			
-
 			// set the position of the projectile very far away.
 			setPosition(k_arenaWidth * k_arenaWidth, k_arenaHeight * k_arenaHeight);
+
+			pEnemyManager->aliveEnemies[i].onGetHit( i );
 
 			break;
 		}

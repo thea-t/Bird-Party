@@ -15,6 +15,8 @@ LevelManager::LevelManager()
 
 void LevelManager::loadLevel( int level )
 {
+	pAudioLoader->loadMusic("Audios/music-" + std::to_string(level) + ".wav");
+
 	std::string levelPath = "Levels/Level" + std::to_string(level) + ".txt";
 	std::string levelString = readFileIntoString(levelPath);
 	std::vector<std::string> splittedString = splitString(levelString);
@@ -47,6 +49,9 @@ void LevelManager::loadLevel( int level )
 void LevelManager::onLevelComplete()
 {
 	m_currentLevel++;
+
+	pEnemyManager->shootTime = pEnemyManager->shootTime - pEnemyManager->shootTime / 5;
+
 	if (m_currentLevel == 5) {
 		// game over
 		*pGameState = GameState::End;

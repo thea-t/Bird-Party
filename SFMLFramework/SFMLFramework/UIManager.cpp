@@ -37,14 +37,11 @@ UIManager::UIManager()
 
 	// set the lose text properties
 	m_youDiedText.setFont(m_font);
-	m_youDiedText.setString("Level failed! Press [SPACE] to return to the menu.");
 	m_youDiedText.setCharacterSize(34);
 	m_youDiedText.setStyle(sf::Text::Bold);
 	m_youDiedText.setOutlineThickness(2.0f);
 	m_youDiedText.setPosition(k_arenaWidth / 2, 200);
-	textRect = m_youDiedText.getLocalBounds();
-	m_youDiedText.setOrigin(textRect.left + textRect.width / 2.0f,
-		textRect.top + textRect.height / 2.0f);
+	
 
 	// set the menu text properties
 	m_menuText.setFont(m_font);
@@ -60,8 +57,11 @@ UIManager::UIManager()
 
 void UIManager::draw(sf::RenderWindow* pWindow, GameState* gameState)
 {
+	m_pWindow = pWindow;
+
 	if (*gameState == GameState::Menu) {
 		pWindow->draw(m_menuText);
+
 	}
 	else if (*gameState == GameState::Play) {
 		for (size_t i = 0; i < pPlayer->currentHealth; i++)
@@ -75,7 +75,7 @@ void UIManager::draw(sf::RenderWindow* pWindow, GameState* gameState)
 	else if (*gameState == GameState::Win) {
 		pWindow->draw(m_levelPassedText);
 	}
-	else if (*gameState == GameState::Lose) {
+	else if (*gameState == GameState::End) {
 		pWindow->draw(m_youDiedText);
 	}
 }
@@ -83,7 +83,6 @@ void UIManager::draw(sf::RenderWindow* pWindow, GameState* gameState)
 void UIManager::update(float deltaTime, GameState* gameState)
 {
 	if (*gameState == GameState::Menu) {
-
 
 		if (m_menuText.getScale().x > m_menuTextMaxScale) {
 			m_menuTextSpeed = -0.4f;
@@ -97,6 +96,8 @@ void UIManager::update(float deltaTime, GameState* gameState)
 
 		// check if space button is pressed
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+			pLevelManager->pAudioLoader->loadMusic("Audios/music-1.wav");
+
 			*gameState = GameState::Play;
 		}
 	}
@@ -107,11 +108,19 @@ void UIManager::update(float deltaTime, GameState* gameState)
 			*gameState = GameState::Play;
 		}
 	}
-	else if (*gameState == GameState::Lose) {
-		// check if space button is pressed
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+	else if (*gameState == GameState::End) {
+		int score = pScoreManager->currentScore;
+		m_youDiedText.setString("Game Over!\nYou scored " + std::to_string(score) + "\nPress [ESC] to exit.");
 
-			*gameState = GameState::Menu;
+		sf::FloatRect textRect = m_youDiedText.getLocalBounds();
+		m_youDiedText.setOrigin(textRect.left + textRect.width / 2.0f,
+			textRect.top + textRect.height / 2.0f);
+
+		// check if space button is pressed
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+
+			m_pWindow->close();
+
 		}
 	}
 }

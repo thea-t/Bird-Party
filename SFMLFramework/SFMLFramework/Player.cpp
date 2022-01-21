@@ -1,6 +1,7 @@
 #include <SFML/Window/Keyboard.hpp>
 #include <iostream>
 #include "Player.h"
+#include "Enemy.h"
 #include "Settings.h"
 
 Player::Player()
@@ -21,7 +22,11 @@ Player::~Player()
 
 void Player::update(float deltaTime)
 {
+
 	m_timePassedBetweenAttacks += deltaTime;
+
+
+	checkCollision();
 
 	int animationIndex = 0;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && m_canShoot)
@@ -47,7 +52,6 @@ void Player::update(float deltaTime)
 
 		animationIndex = 2;
 
-		//std::cout << std::to_string(projectileIndex) + "\n";
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
@@ -55,9 +59,12 @@ void Player::update(float deltaTime)
 		sf::Vector2f scale = getScale();
 
 		pos.x -= k_playerMovementSpeed * deltaTime;
-		if (pos.x < 0.0f)
+
+		int minX = 50;
+
+		if (pos.x < minX)
 		{
-			pos.x = 0.0f;
+			pos.x = minX;
 		}
 		setPosition(pos);
 
@@ -74,9 +81,12 @@ void Player::update(float deltaTime)
 		sf::Vector2f pos = getPosition();
 		sf::Vector2f scale = getScale();
 		pos.x += k_playerMovementSpeed * deltaTime;
-		if (pos.x > k_arenaWidth)
+		
+		int maxX = 50;
+
+		if (pos.x > k_arenaWidth - maxX)
 		{
-			pos.x = k_arenaWidth;
+			pos.x = k_arenaWidth - maxX;
 		}
 		setPosition(pos);
 
@@ -102,6 +112,7 @@ void Player::update(float deltaTime)
 	}
 
 	animate(animationIndex, deltaTime);
+
 }
 
 void Player::animate(int animation, float deltaTime)
@@ -141,3 +152,45 @@ void Player::animate(int animation, float deltaTime)
 	}
 }
 
+void Player::checkCollision()
+{
+	sf::Vector2f pos = getPosition();
+	float radius = getRadius(this);
+
+	for (size_t i = 0; i < pAliveEnemies->size(); i++)
+	{
+
+		Enemy* pEnemy = &((*pAliveEnemies)[i]);
+		sf::Vector2f enemyPosition = pEnemy->getPosition();
+		float enemyRadius = getRadius(pEnemy);
+
+		float distance = getDistance(&pos, &enemyPosition);
+
+		if (radius + enemyRadius >= distance) {
+			pEnemy->onGetHit(i);
+
+			currentHealth--;
+
+			if (currentHealth <= 0) {
+				*pGameState = GameState::End;
+			}
+
+			break;
+		}
+	}
+}
+
+float Player::getRadius(sf::Sprite* sprite)
+{
+	return (float)sprite->getTextureRect().height * sprite->getScale().y / 2;
+
+}
+
+
+//how to calculate the distance between two points: https://www.geeksforgeeks.org/program-calculate-distance-two-points/
+float Player::getDistance(sf::Vector2f* a, sf::Vector2f* b) {
+
+	float distance = std::sqrt(std::pow(b->x - a->x, 2) +
+		std::pow(b->y - a->y, 2) * 1.0);
+	return distance;
+}

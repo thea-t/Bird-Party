@@ -46,18 +46,48 @@ private:
 
 	void handleWindowsEvents();
 
-
+//#######################################################
+//    Function    :    Update
+//    Purpose        :    Is called every frame to update all other managers and objects.
+//    Parameters    :    float
+//    Returns        :    None
+//    Notes        :     None
+//    See also    :    Game::run()
+//#######################################################
 	void update( float deltaTime );
 
-	// this is the render function
-	void render();
+//#######################################################
+//    Function    :    Draw
+//    Purpose        :    Draws all the sprites on the screen.
+//    Parameters    :    None
+//    Returns        :    None
+//    Notes        :     None
+//    See also    :    Game::update()
+//#######################################################
+	void draw();
 
 public:
+//#######################################################
+//    Function    :    Constructor
+//    Purpose        :    Initializes the game.
+//    Parameters    :    None
+//    Returns        :    None
+//    Notes        :     None
+//    See also    :    Main::main()
+//#######################################################
 	Game();
 	~Game();
 
+//#######################################################
+//    Function    :    Run
+//    Purpose        :    Starts the game loop and sets pointers to other managers.
+//    Parameters    :    None
+//    Returns        :    None
+//    Notes        :     None
+//    See also    :    Main::main()
+//#######################################################
 	void run();
 
 };
 
-#endif // End of '#ifndef GAME_H'
+#endif

@@ -8,3 +8,4 @@ void ScoreManager::addScore(int amount)
 {
 	currentScore += amount;
 }
+

@@ -20,9 +20,27 @@ private:
 	sf::Text m_youDiedText;
 	sf::Text m_levelPassedText;
 
+sf::RenderWindow* m_pWindow;
+
+//#######################################################
+//    Function    :    UpdateScoreText
+//    Purpose        :    Sets a new value to the score text.
+//    Parameters    :    int
+//    Returns        :    None
+//    Notes        :     None
+//    See also    :    UIManager::draw()
+//#######################################################
 	void updateScoreText(int score);
 
 public:
+//#######################################################
+//    Function    :    Constructor
+//    Purpose        :    Initializes the UI Manager
+//    Parameters    :    None
+//    Returns        :    None
+//    Notes        :     None
+//    See also    :    Game::run()
+//#######################################################
 	UIManager();
 
 	LevelManager* pLevelManager;
@@ -32,8 +50,24 @@ public:
 	sf::Sprite heartSprite [3];
 	sf::Texture heartTexture;
 
+//#######################################################
+//    Function    :    Draw
+//    Purpose        :    Draws all UI elements on the screen.
+//    Parameters    :    RenderWindow*, GameState*
+//    Returns        :    None
+//    Notes        :     None
+//    See also    :    Game::draw()
+//#######################################################
 	void draw( sf::RenderWindow* pWindow, GameState* gameState);
 
+//#######################################################
+//    Function    :    Update
+//    Purpose        :    Updates UI animations such as the menu text.
+//    Parameters    :    float, GameState*
+//    Returns        :    None
+//    Notes        :     None
+//    See also    :    Game::update()
+//#######################################################
 	void update(float deltaTime, GameState* gameState);
 
 };

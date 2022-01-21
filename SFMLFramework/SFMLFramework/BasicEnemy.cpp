@@ -1,5 +1,5 @@
 #include "BasicEnemy.h"
-#include "Enemy.h"
+#include "EnemyManager.h"
 
 BasicEnemy::BasicEnemy()
 {
@@ -13,3 +13,4 @@ BasicEnemy::BasicEnemy(EnemyManager* enemyManager)
 	move2TexturePath = "Textures/basic-enemy-2.png";
 	pEnemyManager = enemyManager;
 }
+

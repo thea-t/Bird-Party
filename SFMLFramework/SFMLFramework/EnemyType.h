@@ -1,10 +1,8 @@
 #ifndef ENEMYTYPE_H
 #define ENEMYTYPE_H
-enum EnemyType {
+enum class EnemyType {
     Basic,
     Bonus,
-    Fighter,
-    Diver,
-    Rebirth
+    Diver
 };
 #endif

@@ -1,43 +1,38 @@
 #include <iostream>
 #include "EnemyManager.h"
 #include "BasicEnemy.h"
+#include "BonusEnemy.h"
+#include "DiverEnemy.h"
 
 
 EnemyManager::EnemyManager()
 {
-	m_minShootTime = 3;
-	m_maxShootTime = 6;
+	shootTime = 3;
 }
 
 
 void EnemyManager::instantiateEnemy( EnemyType type , int xPos, int yPos)
 {
-
-
-	if ( type == Basic)
+	if ( type == EnemyType::Basic)
 	{
 		BasicEnemy* basicEnemy = new BasicEnemy(this);
 		basicEnemy->setScale(0.1f, 0.1f);
 		basicEnemy->setPosition(xPos* 80 + 50, yPos * 70 + 80);
 		aliveEnemies.push_back(*basicEnemy);
-
-		std::cout << aliveEnemies.size() << "\n";
 	}
-	/*else if (type == Bonus) {
-
-	}
-
-	else if (type == Fighter) {
-
+	else if (type == EnemyType::Bonus) {
+		BonusEnemy* bonusEnemy = new BonusEnemy(this);
+		bonusEnemy->setScale(0.1f, 0.1f);
+		bonusEnemy->setPosition(xPos * 80 + 50, yPos * 70 + 80);
+		aliveEnemies.push_back(*bonusEnemy);
 	}
 
-	else if (type == Diver) {
-
+	else if (type == EnemyType::Diver) {
+		DiverEnemy* diverEnemy = new DiverEnemy(this);
+		diverEnemy->setScale(0.1f, 0.1f);
+		diverEnemy->setPosition(xPos * 80 + 50, yPos * 70 + 80);
+		aliveEnemies.push_back(*diverEnemy);
 	}
-
-	else if (type == Rebirth) {
-
-	}*/
 }
 
 void EnemyManager::refreshEnemies()
@@ -64,8 +59,6 @@ void EnemyManager::update(float deltaTime)
 {
 	m_timePassedSinceLastShoot += deltaTime;
 
-	int shootTime = rand() % m_maxShootTime + m_minShootTime;
-
 	if (shootTime <= m_timePassedSinceLastShoot) {
 
 		if (aliveEnemies.size() > 0) {
@@ -83,6 +76,7 @@ void EnemyManager::shootProjectile()
 	projectiles[projectileIndex].setPosition(aliveEnemies[_rand].getPosition());
 
 	projectileIndex++;
+
 
 	//size of an array: https://stackoverflow.com/questions/4108313/how-do-i-find-the-length-of-an-array
 	int length = sizeof(projectiles) / sizeof(projectiles[0]);

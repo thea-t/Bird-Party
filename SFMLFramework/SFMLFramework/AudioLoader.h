@@ -9,12 +9,44 @@ class AudioLoader
 private:
 
 	sf::Music backgroundMusic;
+	sf::SoundBuffer birdHitBuffer;
+	sf::SoundBuffer birdHitSoftBuffer;
+	sf::SoundBuffer birdHitHeavyBuffer;
 
+	sf::Sound birdHitSound;
+	sf::Sound birdHitSoftSound;
+	sf::Sound birdHitHeavySound;
 public:
 
+//#######################################################
+//    Function    :    Constructor
+//    Purpose        :    Initializes audio loader.
+//    Parameters    :    None
+//    Returns        :    None
+//    Notes        :     None
+//    See also    :    Game::run();
+//#######################################################
 	AudioLoader();
 
-	void loadAudio( std::string path );
+//#######################################################
+//    Function    :    LoadMusic
+//    Purpose        :    Loads and plays the background music.
+//    Parameters    :    string
+//    Returns        :    None
+//    Notes        :     None
+//    See also    :    Game::run();
+//#######################################################
+	void loadMusic( std::string path );
+
+//#######################################################
+//    Function    :    PlayRandomBirdHitSound
+//    Purpose        :    Picks and plays a random sound when the birds get hit by a projectile.
+//    Parameters    :    None
+//    Returns        :    None
+//    Notes        :     None
+//    See also    :    Enemy::onGetHit();
+//#######################################################
+	void playRandomBirdHitSound();
 };
 
 #endif
