@@ -17,7 +17,7 @@ public:
 //    See also    :    LevelManager::loadLevel();
 //#######################################################
 	DiverEnemy();
-	DiverEnemy(EnemyManager* enemyManager);
+	DiverEnemy( EnemyManager* enemyManager );
 
 };
 

@@ -10,7 +10,8 @@
 //    Notes        :     None
 //    See also    :    
 //#######################################################
-enum class GameState {
+enum class GameState 
+{
     Menu,
     Play,
     Pause,

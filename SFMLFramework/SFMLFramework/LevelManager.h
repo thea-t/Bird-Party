@@ -19,7 +19,7 @@ private:
 //    Notes        :     None
 //    See also    :    LevelManager::loadLevel()
 //#######################################################
-	std::string readFileIntoString(const std::string& path);
+	std::string readFileIntoString( const std::string& path );
 
 //#######################################################
 //    Function    :    SplitString
@@ -29,7 +29,7 @@ private:
 //    Notes        :     None
 //    See also    :    LevelManager::loadLevel()
 //#######################################################
-	std::vector<std::string> splitString(const std::string& str);
+	std::vector<std::string> splitString( const std::string& str );
 
 public:
 //#######################################################
@@ -42,7 +42,7 @@ public:
 //#######################################################
 	LevelManager();
 
-	void setCurrentLevel(int level)
+	void setCurrentLevel( int level )
 	{
 		m_currentLevel = level;
 	}

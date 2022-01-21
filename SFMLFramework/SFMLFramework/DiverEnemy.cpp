@@ -1,6 +1,7 @@
 #include "DiverEnemy.h"
 #include "EnemyManager.h"
 #include <iostream>
+
 DiverEnemy::DiverEnemy()
 {
 	move1TexturePath = "Textures/diver-enemy-1.png";
@@ -10,7 +11,7 @@ DiverEnemy::DiverEnemy()
 	m_isDiving = false;
 }
 
-DiverEnemy::DiverEnemy(EnemyManager* enemyManager)
+DiverEnemy::DiverEnemy( EnemyManager* enemyManager )
 {
 	move1TexturePath = "Textures/diver-enemy-1.png";
 	move2TexturePath = "Textures/diver-enemy-2.png";

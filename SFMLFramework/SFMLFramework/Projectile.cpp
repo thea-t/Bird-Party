@@ -27,13 +27,14 @@ void Projectile::update(float deltaTime)
 
 void Projectile::checkCollision()
 {
-	
+// this is empty because EnemyProjectile and PlayerProjectile overrides it differently.	
 }
+
 
 float Projectile::getRadius(sf::Sprite* sprite)
 {
+	// calculate the radius of this sprite by dividing its height to 2
 	return (float)sprite->getTextureRect().height * sprite->getScale().y / 2;
-
 }
 
 

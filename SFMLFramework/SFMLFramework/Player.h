@@ -45,7 +45,7 @@ private:
 //    Notes        :     None
 //    See also    :    Player::checkCollision()
 //#######################################################
-	float getRadius(sf::Sprite* sprite);
+	float getRadius( sf::Sprite* sprite );
 
 //#######################################################
 //    Function    :    GetDistance
@@ -55,7 +55,7 @@ private:
 //    Notes        :     None
 //    See also    :    Player::checkCollision()
 //#######################################################
-	float getDistance(sf::Vector2f* a, sf::Vector2f* b);
+	float getDistance( sf::Vector2f* a, sf::Vector2f* b );
 
 public:
 //#######################################################

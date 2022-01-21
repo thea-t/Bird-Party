@@ -1,28 +1,28 @@
 #include "Game.h"
 
 Game::Game()
-	: m_pWindow(nullptr)
+	: m_pWindow( nullptr )
 {
-	m_pWindow = new sf::RenderWindow(sf::VideoMode(k_windowWidth, k_windowHeight), "Falconry");
+	m_pWindow = new sf::RenderWindow( sf::VideoMode( k_windowWidth, k_windowHeight), "Bird Party" );
 
 	// Setup Window frame-rate setting
-	m_pWindow->setFramerateLimit(60);
+	m_pWindow->setFramerateLimit( 60 );
 	// Enable vertical sync to be on
-	m_pWindow->setVerticalSyncEnabled(true);
+	m_pWindow->setVerticalSyncEnabled( true );
 
 }
 
 Game::~Game()
 {
-	SAFE_DELETE(m_pWindow);
+	SAFE_DELETE( m_pWindow );
 }
 
 void Game::handleWindowsEvents()
 {
 	sf::Event event;
-	while (m_pWindow->pollEvent(event))
+	while ( m_pWindow->pollEvent( event ) )
 	{
-		if (event.type == sf::Event::Closed)
+		if ( event.type == sf::Event::Closed )
 		{
 			m_pWindow->close();
 		}
@@ -37,13 +37,15 @@ void Game::run()
 
 	m_gameState = GameState::Menu;
 
-	for (size_t i = 0; i < 100; i++)
+	// set the references of managers to other classes in order to access them from different classes.
+	for ( size_t i = 0; i < 100; i++ )
 	{
-		m_player.projectiles[i].pEnemyManager = &m_enemyManager;
-		m_enemyManager.projectiles[i].pPlayerSprite = &m_player;
-		m_enemyManager.projectiles[i].pGameState = &m_gameState;
-		m_enemyManager.projectiles[i].setPlayerHealth(&m_player.currentHealth);
+		m_player.projectiles[ i ].pEnemyManager = &m_enemyManager;
+		m_enemyManager.projectiles[ i ].pPlayerSprite = &m_player;
+		m_enemyManager.projectiles[ i ].pGameState = &m_gameState;
+		m_enemyManager.projectiles[ i ].setPlayerHealth( &m_player.currentHealth );
 	}
+
 	m_levelManager.pAudioLoader = &m_audioLoader;
 	m_levelManager.pEnemyManager = &m_enemyManager;
 	m_uiManager.pPlayer = &m_player;
@@ -56,10 +58,10 @@ void Game::run()
 	m_player.pAliveEnemies = &m_enemyManager.aliveEnemies;
 	m_player.pGameState = &m_gameState;
 
-	m_levelManager.loadLevel(0);
-	m_TextureLoader.loadTextures(&m_player, &m_enemyManager, &m_uiManager, &m_background);
+	m_levelManager.loadLevel( 0 );
+	m_TextureLoader.loadTextures( &m_player, &m_enemyManager, &m_uiManager, &m_background );
 
-	while (m_pWindow->isOpen())
+	while ( m_pWindow->isOpen() )
 	{
 		// Handle all Windows events
 		handleWindowsEvents();
@@ -70,7 +72,7 @@ void Game::run()
 		// Get the elapsedTime since last time round
 		float elapsedTime = m_clock.restart().asSeconds();
 		// Update all objects
-		update(elapsedTime);
+		update( elapsedTime );
 
 		// Render all objects
 		draw();
@@ -80,42 +82,43 @@ void Game::run()
 	}
 }
 
-void Game::update(float deltaTime)
+void Game::update( float deltaTime )
 {
-
 	// update the background
-	m_background.update(deltaTime, &m_gameState);
-	m_uiManager.update(deltaTime, &m_gameState);
+	m_background.update( deltaTime, &m_gameState );
+	m_uiManager.update( deltaTime, &m_gameState );
 
-	if (m_gameState == GameState::Play) {
+	if ( m_gameState == GameState::Play ) 
+	{
 		// update the player
-		m_player.update(deltaTime);
+		m_player.update( deltaTime );
 
 		// update the enemy manager
-		m_enemyManager.update(deltaTime);
+		m_enemyManager.update( deltaTime );
 
 
 		// update the enemies
-		for (size_t i = 0; i < m_enemyManager.aliveEnemies.size(); i++)
+		for ( size_t i = 0; i < m_enemyManager.aliveEnemies.size(); i++ )
 		{
-			m_enemyManager.aliveEnemies[i].update(deltaTime);
+			m_enemyManager.aliveEnemies[ i ].update( deltaTime );
 		}
 		// update the player projectiles
-		for (int i = 0; i < m_player.projectileIndex; i++)
+		for ( int i = 0; i < m_player.projectileIndex; i++ )
 		{
-			m_player.projectiles[i].update(deltaTime);
+			m_player.projectiles[ i ].update( deltaTime );
 		}
 		// update enemy projectiles
-		for (size_t i = 0; i < m_enemyManager.projectileIndex; i++)
+		for ( size_t i = 0; i < m_enemyManager.projectileIndex; i++ )
 		{
-			m_enemyManager.projectiles[i].update(deltaTime);
+			m_enemyManager.projectiles[ i ].update( deltaTime );
 		}
 	}
 
 }
-//function comments
+
 void Game::draw()
 {
+	// call the draw function on every other manager and class.
 	m_background.draw(m_pWindow, &m_gameState);
 
 	if (m_gameState == GameState::Menu) {

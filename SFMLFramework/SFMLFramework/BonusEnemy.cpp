@@ -9,7 +9,7 @@ BonusEnemy::BonusEnemy()
 	move2TexturePath = "Textures/bonus-enemy-2.png";
 }
 
-BonusEnemy::BonusEnemy(EnemyManager* enemyManager)
+BonusEnemy::BonusEnemy( EnemyManager* enemyManager )
 {
 	m_scoreGainedOnDeath = m_scoreGainedOnDeath * m_scoreMultiplier;
 

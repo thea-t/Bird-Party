@@ -36,21 +36,26 @@ void Enemy::update( float deltaTime )
 {
 	move( deltaTime );
 
-	animate(deltaTime);
+	animate( deltaTime );
 }
 
 
 
-void Enemy::move(float deltaTime)
+void Enemy::move( float deltaTime )
 {
-	if (m_isDiving) {
-		setPosition(getPosition().x, getPosition().y + (m_movementSpeed * deltaTime));
 
-		if (getPosition().y > k_arenaHeight+50) {
-			for (size_t i = 0; i < pEnemyManager->aliveEnemies.size(); i++)
+	// Check if the enemy is diving. If so, move down. Erase it once it goes out of the window.
+	if ( m_isDiving ) 
+	{
+		setPosition( getPosition().x, getPosition().y + ( m_movementSpeed * deltaTime ) );
+
+		if ( getPosition().y > k_arenaHeight+50 ) 
+		{
+			for ( size_t i = 0; i < pEnemyManager->aliveEnemies.size(); i++ )
 			{
-				if (&pEnemyManager->aliveEnemies[i] == this) {
-					pEnemyManager->aliveEnemies.erase(pEnemyManager->aliveEnemies.begin() + i);
+				if ( &pEnemyManager->aliveEnemies[i] == this ) 
+				{
+					pEnemyManager->aliveEnemies.erase( pEnemyManager->aliveEnemies.begin() + i );
 					pEnemyManager->refreshEnemies();
 					break;
 				}
@@ -58,77 +63,93 @@ void Enemy::move(float deltaTime)
 
 		}
 	}
-	else {
-		if (pEnemyManager->isMovingLeft) {
-			setPosition(getPosition().x - (m_movementSpeed * deltaTime), getPosition().y);
+	else 
+	{
+		// If the enemy isn't diving, check if it should move left or right. Set its position accordingly.
+		// isMovingLeft is set by the EnemyManager to move all enemies at once to one direction.
+		if ( pEnemyManager->isMovingLeft ) 
+		{
+			setPosition( getPosition().x - ( m_movementSpeed * deltaTime ), getPosition().y );
 
-			if (getPosition().x <= 40) {
-
-
+			if ( getPosition().x <= 40 ) 
+			{
 				// cannot convert bool to bool*: https://stackoverflow.com/questions/2939286/error-c2440-cannot-convert-from-bool-to-bool/2939292
 				pEnemyManager->isMovingLeft = false;
-				for (size_t i = 0; i < pEnemyManager->aliveEnemies.size(); i++)
+				for ( size_t i = 0; i < pEnemyManager->aliveEnemies.size(); i++ )
 				{
-					pEnemyManager->aliveEnemies[i].setScale(-pEnemyManager->aliveEnemies[i].getScale().x, pEnemyManager->aliveEnemies[i].getScale().y);
-					pEnemyManager->aliveEnemies[i].setPosition(pEnemyManager->aliveEnemies[i].getPosition().x, pEnemyManager->aliveEnemies[i].getPosition().y + 35);
+					pEnemyManager->aliveEnemies[ i ].setScale(-pEnemyManager->aliveEnemies[ i ].getScale().x, pEnemyManager->aliveEnemies[i].getScale().y );
+					pEnemyManager->aliveEnemies[ i ].setPosition(pEnemyManager->aliveEnemies[ i ].getPosition().x, pEnemyManager->aliveEnemies[i].getPosition().y + 35 );
 				}
 			}
 		}
-		else {
-			setPosition(getPosition().x + (m_movementSpeed * deltaTime), getPosition().y);
+		else 
+		{
+			setPosition( getPosition().x + ( m_movementSpeed * deltaTime ), getPosition().y );
 
-			if (getPosition().x >= k_arenaWidth - 40) {
-
-
+			if ( getPosition().x >= k_arenaWidth - 40 ) 
+			{
 				pEnemyManager->isMovingLeft = true;
-				for (size_t i = 0; i < pEnemyManager->aliveEnemies.size(); i++)
+				for ( size_t i = 0; i < pEnemyManager->aliveEnemies.size(); i++ )
 				{
-					pEnemyManager->aliveEnemies[i].setScale(-pEnemyManager->aliveEnemies[i].getScale().x, pEnemyManager->aliveEnemies[i].getScale().y);
-					pEnemyManager->aliveEnemies[i].setPosition(pEnemyManager->aliveEnemies[i].getPosition().x, pEnemyManager->aliveEnemies[i].getPosition().y + 35);
+					pEnemyManager->aliveEnemies[ i ].setScale(-pEnemyManager->aliveEnemies[ i ].getScale().x, pEnemyManager->aliveEnemies[ i ].getScale().y );
+					pEnemyManager->aliveEnemies[ i ].setPosition(pEnemyManager->aliveEnemies[ i ].getPosition().x, pEnemyManager->aliveEnemies[ i ].getPosition().y + 35 );
 				}
 			}
 		}
 	}
 }
 
-void Enemy::animate(float deltaTime)
+void Enemy::animate( float deltaTime )
 {
+	// count the time passed between each animation.
 	m_timePassedBetweenSteps += deltaTime;
 
 	// how to get a random value between two values: https://www.cplusplus.com/reference/cstdlib/rand/
 	// i multiplied it by 100 in order to use it as integer and then divided it later to get it as float because random only works with integers.
-	float randomDelay = ((float)(rand() % (int)(m_maxDelayBetweenSteps * 100) + (int)(m_minDelayBetweenSteps * 100))) / 100;
+	float randomDelay = ( ( float )( rand() % ( int )( m_maxDelayBetweenSteps * 100 ) + ( int )( m_minDelayBetweenSteps * 100 ) ) ) / 100;
 
-	if (m_timePassedBetweenSteps >= randomDelay) {
+	// swap enemies textures every random second.
+	if ( m_timePassedBetweenSteps >= randomDelay ) 
+	{
 
-		if (getTexture() == &move1Texture) {
-			setTexture(move2Texture);
+		if ( getTexture() == &move1Texture ) 
+		{
+			setTexture( move2Texture );
 		}
-		else {
-			setTexture(move1Texture);
+		else 
+		{
+			setTexture( move1Texture );
 		}
 		m_timePassedBetweenSteps = 0;
-
 	}
 }
 
 
-void Enemy::onGetHit(int hitEnemyIndex)
+void Enemy::onGetHit( int hitEnemyIndex )
 {
-	if (!m_isImmune) {
-		
-		if (m_divesOnDeath) {
-			if (!m_isAngry) {
-				m_isAngry = true;
-				move1Texture.loadFromFile("Textures/diver-enemy-3.png");
-				move2Texture.loadFromFile("Textures/diver-enemy-4.png");
-			}
-			else {
-				move1Texture.loadFromFile("Textures/diver-enemy-5.png");
-				move2Texture.loadFromFile("Textures/diver-enemy-6.png");
+	// check if this enemy is immune. For now, only divers are immune while diving.
+	// while diving, divers don't take any damage but can damage the player.
+	if ( !m_isImmune ) 
+	{
+		// check if this enemy dives after it dies.
+		if ( m_divesOnDeath ) 
+		{
 
-				pEnemyManager->pScoreManager->addScore(m_scoreGainedOnDeath);
-				setRotation(90);
+			// check if this enemy gets angry after the first hit. If so, change its textures and set it angry.
+			if ( !m_isAngry ) 
+			{
+				m_isAngry = true;
+				move1Texture.loadFromFile( "Textures/diver-enemy-3.png" );
+				move2Texture.loadFromFile( "Textures/diver-enemy-4.png" );
+			}
+			// if not, start diving
+			else 
+			{
+				move1Texture.loadFromFile( "Textures/diver-enemy-5.png" );
+				move2Texture.loadFromFile( "Textures/diver-enemy-6.png" );
+
+				pEnemyManager->pScoreManager->addScore( m_scoreGainedOnDeath );
+				setRotation( 90 );
 
 				m_isDiving = true;
 				m_isImmune = true;
@@ -136,13 +157,13 @@ void Enemy::onGetHit(int hitEnemyIndex)
 			}
 
 		}
-		else {
-
-
-			pEnemyManager->pScoreManager->addScore(m_scoreGainedOnDeath);
+		else 
+		{
+			
+			pEnemyManager->pScoreManager->addScore( m_scoreGainedOnDeath );
 			// how to remove element from a vector: https://www.cplusplus.com/reference/vector/vector/erase/
 			// does erasing automatically destroy the object: https://stackoverflow.com/questions/6353149/does-vectorerase-on-a-vector-of-object-pointers-destroy-the-object-itself#:~:text=Removes%20from%20the%20vector%20container,take%20ownership%20of%20destroying%20it.
-			pEnemyManager->aliveEnemies.erase(pEnemyManager->aliveEnemies.begin() + hitEnemyIndex);
+			pEnemyManager->aliveEnemies.erase( pEnemyManager->aliveEnemies.begin() + hitEnemyIndex );
 
 		}
 

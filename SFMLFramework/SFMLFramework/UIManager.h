@@ -68,7 +68,7 @@ public:
 //    Notes        :     None
 //    See also    :    Game::update()
 //#######################################################
-	void update(float deltaTime, GameState* gameState);
+	void update( float deltaTime, GameState* gameState );
 
 };
 

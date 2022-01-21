@@ -11,8 +11,8 @@ Player::Player()
 
 	currentHealth = maxHealth;
 
-	this->setScale(0.2, 0.2);
-	this->setPosition(k_windowWidth / 2, k_windowHeight - 130);
+	this->setScale( 0.2, 0.2 );
+	this->setPosition( k_windowWidth / 2, k_windowHeight - 130 );
 }
 
 Player::~Player()
@@ -20,16 +20,17 @@ Player::~Player()
 }
 
 
-void Player::update(float deltaTime)
+void Player::update( float deltaTime )
 {
-
+	// count the time passed between each attack
 	m_timePassedBetweenAttacks += deltaTime;
 
 
 	checkCollision();
-
+	
+	// read players input and move or shoot accordingly.
 	int animationIndex = 0;
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && m_canShoot)
+	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Space ) && m_canShoot )
 	{
 		m_timePassedBetweenAttacks = 0;
 		m_canShoot = false;
@@ -39,13 +40,13 @@ void Player::update(float deltaTime)
 		pos.y -= 30;
 
 		// set the next projectile's position as the same as the offsetted player position
-		projectiles[projectileIndex].setPosition(pos);
+		projectiles[ projectileIndex ].setPosition( pos );
 
 		projectileIndex++;
 
 		//size of an array: https://stackoverflow.com/questions/4108313/how-do-i-find-the-length-of-an-array
-		int length = sizeof(projectiles) / sizeof(projectiles[0]);
-		if (projectileIndex == length)
+		int length = sizeof( projectiles ) / sizeof( projectiles[ 0 ] );
+		if ( projectileIndex == length )
 		{
 			projectileIndex = 0;
 		}
@@ -53,7 +54,8 @@ void Player::update(float deltaTime)
 		animationIndex = 2;
 
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	// move the player if A or D buttons are pressed
+	else if ( sf::Keyboard::isKeyPressed( sf::Keyboard::A ) )
 	{
 		sf::Vector2f pos = getPosition();
 		sf::Vector2f scale = getScale();
@@ -62,21 +64,21 @@ void Player::update(float deltaTime)
 
 		int minX = 50;
 
-		if (pos.x < minX)
+		if ( pos.x < minX )
 		{
 			pos.x = minX;
 		}
-		setPosition(pos);
+		setPosition( pos );
 
-		if (scale.x < 0)
+		if ( scale.x < 0 )
 		{
-			setScale(-scale.x, scale.y);
+			setScale( -scale.x, scale.y );
 		}
 
 		animationIndex = 1;
 	}
 
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	else if ( sf::Keyboard::isKeyPressed( sf::Keyboard::D ) )
 	{
 		sf::Vector2f pos = getPosition();
 		sf::Vector2f scale = getScale();
@@ -84,20 +86,20 @@ void Player::update(float deltaTime)
 		
 		int maxX = 50;
 
-		if (pos.x > k_arenaWidth - maxX)
+		if ( pos.x > k_arenaWidth - maxX )
 		{
 			pos.x = k_arenaWidth - maxX;
 		}
-		setPosition(pos);
+		setPosition( pos );
 
-		if (scale.x > 0)
+		if ( scale.x > 0 )
 		{
-			setScale(-scale.x, getScale().y);
+			setScale( -scale.x, getScale().y );
 		}
 
 		animationIndex = 1;
 	}
-	else if (!m_canShoot)
+	else if ( !m_canShoot )
 	{
 		animationIndex = 2;
 	}
@@ -106,72 +108,77 @@ void Player::update(float deltaTime)
 		animationIndex = 0;
 	}
 
-	if (m_timePassedBetweenAttacks > m_delayBetweenAttacks)
+	if ( m_timePassedBetweenAttacks > m_delayBetweenAttacks )
 	{
 		m_canShoot = true;
 	}
 
-	animate(animationIndex, deltaTime);
+	animate( animationIndex, deltaTime );
 
 }
 
-void Player::animate(int animation, float deltaTime)
+void Player::animate( int animation, float deltaTime )
 {
+	// count down the time passed between each steps that player makes.
 	m_timePassedBetweenSteps += deltaTime;
 
 
-	if (animation == 0)
+	if ( animation == 0 )
 	{
 		// set idle texture
-		setTexture(idleTexture);
+		setTexture( idleTexture );
 	}
-	else if (animation == 1)
+	else if ( animation == 1 )
 	{
-		if (m_timePassedBetweenSteps >= m_delayBetweenSteps)
+		if ( m_timePassedBetweenSteps >= m_delayBetweenSteps )
 		{
-			if (m_stepMade)
+			if ( m_stepMade )
 			{
 				// set move1 texture
-				setTexture(move1Texture);
+				setTexture( move1Texture );
 				m_stepMade = false;
 			}
 			else
 			{
 				// set move2 texture
-				setTexture(move2Texture);
+				setTexture( move2Texture );
 				m_stepMade = true;
 			}
 
 			m_timePassedBetweenSteps = 0;
 		}
 	}
-	else if (animation == 2)
+	else if ( animation == 2 )
 	{
 		// set shoot texture
-		setTexture(shootTexture);
+		setTexture( shootTexture );
 	}
 }
 
 void Player::checkCollision()
 {
+	// calculate the distance between the player and all other enemies.
+	// if an enemy collides with the player, player loses.
 	sf::Vector2f pos = getPosition();
-	float radius = getRadius(this);
+	float radius = getRadius( this );
 
-	for (size_t i = 0; i < pAliveEnemies->size(); i++)
+	for ( size_t i = 0; i < pAliveEnemies->size(); i++ )
 	{
 
-		Enemy* pEnemy = &((*pAliveEnemies)[i]);
+		Enemy* pEnemy = &( ( *pAliveEnemies )[ i ] );
 		sf::Vector2f enemyPosition = pEnemy->getPosition();
-		float enemyRadius = getRadius(pEnemy);
+		float enemyRadius = getRadius( pEnemy );
 
-		float distance = getDistance(&pos, &enemyPosition);
+		float distance = getDistance( &pos, &enemyPosition );
 
-		if (radius + enemyRadius >= distance) {
-			pEnemy->onGetHit(i);
+		if (radius + enemyRadius >= distance ) 
+		{
+			pEnemy->onGetHit( i );
 
 			currentHealth--;
 
-			if (currentHealth <= 0) {
+			if ( currentHealth <= 0 ) 
+			{
 				*pGameState = GameState::End;
 			}
 
@@ -180,9 +187,9 @@ void Player::checkCollision()
 	}
 }
 
-float Player::getRadius(sf::Sprite* sprite)
+float Player::getRadius( sf::Sprite* sprite )
 {
-	return (float)sprite->getTextureRect().height * sprite->getScale().y / 2;
+	return ( float )sprite->getTextureRect().height * sprite->getScale().y / 2;
 
 }
 

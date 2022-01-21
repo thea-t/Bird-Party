@@ -16,7 +16,7 @@ public:
 //    See also    :    LevelManager::loadLevel();
 //#######################################################
 	BasicEnemy();
-	BasicEnemy(EnemyManager* enemyManager);
+	BasicEnemy( EnemyManager* enemyManager );
 
 
 };

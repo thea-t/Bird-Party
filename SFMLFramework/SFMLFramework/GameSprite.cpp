@@ -14,6 +14,7 @@ GameSprite::~GameSprite()
 
 bool GameSprite::load( const char* fileName )
 {
+
 	bool loaded = m_texture.loadFromFile( fileName );
 	if( loaded )
 	{

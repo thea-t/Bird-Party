@@ -15,7 +15,8 @@ private:
 	float m_timePassedBetweenSteps;
 	bool m_isImmune;
 	bool m_collisionEnabled;
-
+	int m_movementSpeed;
+	
 //#######################################################
 //    Function    :    Animate
 //    Purpose        :    Swaps textures every x seconds to animate the sprite.
@@ -34,13 +35,12 @@ private:
 //    Notes        :     None
 //    See also    :    Enemy::update();
 //#######################################################
-	void move(float deltaTime);
+	void move( float deltaTime );
 
 protected:
 	bool m_isAngry;
 	bool m_isDiving;
 	bool m_divesOnDeath;
-	int m_movementSpeed;
 	int m_scoreGainedOnDeath;
 	EnemyManager* pEnemyManager;
 
@@ -63,6 +63,15 @@ public:
 	sf::Texture move1Texture;
 	sf::Texture move2Texture;
 
+	void setMovementSpeed( int value )
+	{
+		m_movementSpeed = value;
+	}
+	int getMovementSpeed()
+	{
+		return m_movementSpeed;
+	}
+
 //#######################################################
 //    Function    :    Update
 //    Purpose        :    Updates the enemy every frame. Is called by the Game.
@@ -81,7 +90,7 @@ public:
 //    Notes        :     None
 //    See also    :    PlayerProjectile::checkCollision();
 //#######################################################
-	 void onGetHit(int hitEnemyIndex);
+	 void onGetHit( int hitEnemyIndex );
 };
 
 #endif

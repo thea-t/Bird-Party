@@ -1,37 +1,13 @@
 ﻿  AudioLoader.cpp
   Background.cpp
-  BasicEnemy.cpp
-  BonusEnemy.cpp
-  DiverEnemy.cpp
   Enemy.cpp
-  EnemyManager.cpp
-C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\EnemyManager.cpp(20,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\EnemyManager.cpp(20,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\EnemyManager.cpp(26,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\EnemyManager.cpp(26,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\EnemyManager.cpp(33,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\EnemyManager.cpp(33,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   EnemyProjectile.cpp
-  Game.cpp
-C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\Game.h(19,10): fatal error C1083: Cannot open include file: 'Helpers.h': No such file or directory
-  LevelManager.cpp
-C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\LevelManager.cpp(28,23): warning C4018: '<': signed/unsigned mismatch
-C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\LevelManager.cpp(30,24): warning C4018: '<': signed/unsigned mismatch
-  Main.cpp
-C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\Game.h(19,10): fatal error C1083: Cannot open include file: 'Helpers.h': No such file or directory
-  Player.cpp
-C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\Player.cpp(14,25): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\Player.cpp(67,12): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\Player.cpp(193,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   PlayerProjectile.cpp
-  TextureLoader.cpp
-C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\TextureLoader.cpp(70,40): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\TextureLoader.cpp(93,23): warning C4018: '<': signed/unsigned mismatch
-C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\TextureLoader.cpp(101,23): warning C4018: '<': signed/unsigned mismatch
-  UIManager.cpp
-C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\UIManager.cpp(11,33): warning C4244: 'argument': conversion from 'size_t' to 'float', possible loss of data
-C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\UIManager.cpp(67,24): warning C4018: '<': signed/unsigned mismatch
+  Projectile.cpp
+C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\SFMLFramework\Projectile.cpp(44,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Generating code
+  13 of 499 functions ( 2.6%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    2 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  SFMLFramework.vcxproj -> C:\PROJECTS\c++\SpaceInvaders\SFMLFramework\Release\SFMLFramework.exe

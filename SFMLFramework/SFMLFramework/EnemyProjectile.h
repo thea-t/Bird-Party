@@ -37,14 +37,9 @@ public:
 	sf::Sprite* pPlayerSprite;
 	GameState* pGameState;
 
-	void setPlayerHealth(int* pPlayerHealth)
+	void setPlayerHealth( int* pPlayerHealth )
 	{
 		m_pPlayerHealth = pPlayerHealth;
-	}
-
-	int* getPlayerHealth()
-	{
-		return m_pPlayerHealth;
 	}
 };
 

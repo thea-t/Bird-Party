@@ -23,11 +23,12 @@ public:
 
 
 	GameSprite menuBackground;
-	GameSprite level1Backgrounds[6];
-	GameSprite level2Backgrounds[5];
-	GameSprite level3Backgrounds[7];
-	GameSprite level4Backgrounds[5];
-	GameSprite level5Backgrounds[7];
+	GameSprite menuLogo;
+	GameSprite level1Backgrounds[ 6 ];
+	GameSprite level2Backgrounds[ 5 ];
+	GameSprite level3Backgrounds[ 7 ];
+	GameSprite level4Backgrounds[ 5 ];
+	GameSprite level5Backgrounds[ 7 ];
 
 	GameSprite platform;
 
@@ -41,7 +42,7 @@ public:
 //    Notes        :     None
 //    See also    :    Game::draw();
 //#######################################################
-	void draw(sf::RenderWindow* pWindow, GameState* gameState);
+	void draw( sf::RenderWindow* pWindow, GameState* gameState );
 
 //#######################################################
 //    Function    :    Update
@@ -51,7 +52,7 @@ public:
 //    Notes        :     None
 //    See also    :    Game::update();
 //#######################################################
-	void update(float deltaTime, GameState* gameState);
+	void update( float deltaTime, GameState* gameState );
 
 };
 #endif

@@ -18,7 +18,7 @@ public:
 //    See also    :    Player::update();
 //#######################################################
 	PlayerProjectile();
-	PlayerProjectile(sf::Vector2f position);
+	PlayerProjectile( sf::Vector2f position );
 	~PlayerProjectile();
 
 	EnemyManager* pEnemyManager;
